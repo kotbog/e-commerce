@@ -20,8 +20,7 @@ const UserModel = new mongoose.Schema({
         required: true
     },
     telephone: {
-        type: String,
-        required: true
+        type: String
     },
     created_at: {
         type: Date,
@@ -29,11 +28,11 @@ const UserModel = new mongoose.Schema({
     },
     modified_at: {
         type: Date,
-        required: true
+
     },
     deleted_at: {
         type: Date,
-        required: true
+
     }
 });
 

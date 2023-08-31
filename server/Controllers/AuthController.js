@@ -5,12 +5,13 @@ import bcrypt from "bcrypt";
 
 export const SignUp = async (req, res, next) => {
     try {
-        const {email, password, createdAt} = req.body;
+        const {email, password, first_name, last_name, createdAt} = req.body;
+
         const existingUser = await User.findOne({email});
         if(existingUser) {
             return res.json({ message: "User already exists" });
         }
-        const user = await User.create({email, password, createdAt});
+        const user = await User.create({email, password, first_name, last_name, createdAt});
         const token = createToken(user._id);
         res.cookie("token", token, {
             withCredentials: true,
