@@ -26,14 +26,14 @@ const Product = () => {
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
             </div>
-            <NavLink to={''}>
+            <NavLink to={'/product'}>
                 <img src={Prod} alt="product" className={'w-full h-full object-contain'}/>
             </NavLink>
             <button className={`font-bold transition duration-300 transform bg-black text-white w-full py-2 absolute bottom-0${animateBtn ? ' opacity-1 translate-y-0' : ' opacity-0 translate-y-5'}`}>Add to cart</button>
         </div>
         <h4 className={'font-bold pt-4'}>Quilted Satin Jacket</h4>
         <div className={'flex justify-start content-center'}>
-            <h4 className={'text-red-500'}>$400</h4>
+            <h4 className={'text-red-500 mr-3'}>$400</h4>
             <Rating score={4} ratingQuantity={3}/>
         </div>
 

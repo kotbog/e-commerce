@@ -59,7 +59,7 @@ const LoginForm = () => {
                    type={'password'} value={formik.values.password}
                    onChange={formik.handleChange}
             />
-            <Button text={'Sign In'} type={'submit'} />
+            <Button value={'Sign In'} type={'submit'} styles={'bg-red-500'}/>
             <div className={'text-sm mt-2 text-center'}>Doesn't have an account? <NavLink to={'/signup'} className={'underline'}>Sign Up</NavLink></div>
     </form>)
 

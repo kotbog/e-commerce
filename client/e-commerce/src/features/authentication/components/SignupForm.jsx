@@ -85,7 +85,7 @@ const SignupForm = () => {
                inValid={formik.errors.password && formik.touched.password}
                onChange={formik.handleChange}
         />
-        <Button text={'Sign In'} type={'submit'}/>
+        <Button value={'Sign In'} type={'submit'} styles={'bg-red-500'}/>
         <div className={'text-sm mt-2 text-center'}>Already have an account? <NavLink to={'/login'} className={'underline'}>Log In</NavLink></div>
     </form>
 }

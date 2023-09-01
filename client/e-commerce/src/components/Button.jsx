@@ -1,7 +1,7 @@
 const Button = (props) => {
-    const {text, disabled} = props;
-    return <button className={'block text-white py-2 px-8 rounded my-2' + (disabled ? ' bg-gray-600' : ' bg-red-500')} {...props}>
-        {text}
+    const {value, styles} = props;
+    return <button className={`block font-medium text-white p-2 rounded my-2 ${styles}`} {...props}>
+        {value}
     </button>
 }
 export default Button;

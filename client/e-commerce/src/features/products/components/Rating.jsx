@@ -21,9 +21,9 @@ const Rating = ({score, ratingQuantity}) => {
 
 
 
-    return <div className={'flex ml-4'}>
+    return <div className={'flex'}>
         {setRating()}
-        <span className={'pl-1 text-gray-500'}>({ratingQuantity})</span>
+        <span className={'text-gray-500 ml-2'}>({ratingQuantity})</span>
     </div>
 }
 

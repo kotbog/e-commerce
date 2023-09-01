@@ -7,9 +7,7 @@ const Home = () => {
             <Product/>
             <Product/>
             <Product/>
-
         </div>
-
     </div>
 }
 export default Home;
