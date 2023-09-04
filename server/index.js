@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from 'dotenv'
 import cookieParser from "cookie-parser";
 import AuthRoute from './Routes/AuthRoute.js'
+import ProductRoute from "./Routes/ProductRoute.js";
 
 
 dotenv.config();
@@ -31,6 +32,10 @@ app.use(cors({
 
 app.use(cookieParser());
 
+
+
 app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 app.use("/", AuthRoute);
+app.use("/product", ProductRoute)

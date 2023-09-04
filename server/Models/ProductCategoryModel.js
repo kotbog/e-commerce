@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const ProductCategoryModel = new mongoose.Schema({
     name: {
         type: String,
-        require: true
+        required: true
     },
     desc: {
         type: String
@@ -20,4 +20,4 @@ const ProductCategoryModel = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model("ProductCategory", ProductCategoryModel);
+export default mongoose.model("ProductCategory", ProductCategoryModel);

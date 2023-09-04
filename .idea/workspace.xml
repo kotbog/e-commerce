@@ -1,11 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="a17c6537-b2de-4bcb-ab65-090e190dae1a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/client/e-commerce/src/features/products/context/ProductsActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/e-commerce/src/features/products/context/ProductsReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/e-commerce/src/features/products/context/ProductsSaga.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/e-commerce/src/features/products/data/action_types.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/e-commerce/src/features/products/services/products_api.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/server/Controllers/ProductsController.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/server/Models/ProductImageModel.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/Routes/AuthProduct.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/Routes/ProductRoute.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/assets/speaker1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/assets/speaker2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/util/ConvertToBase64.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/e-commerce/src/context/rootSaga.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/e-commerce/src/context/rootSaga.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/e-commerce/src/context/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/e-commerce/src/context/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/e-commerce/src/features/products/components/Product.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/e-commerce/src/features/products/components/Product.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/e-commerce/src/lib/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/e-commerce/src/lib/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/e-commerce/src/pages/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/e-commerce/src/pages/Home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/e-commerce/src/pages/ProductProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/e-commerce/src/pages/ProductProfile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Models/ProductCategoryModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/Models/ProductCategoryModel.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/Models/ProductModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/Models/ProductModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,28 +40,28 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2Utifr5J3aHF51DUpP2hCK88DZf" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -49,6 +71,7 @@
       <option name="presentableId" value="Default" />
       <updated>1693765383263</updated>
       <workItem from="1693765391752" duration="20000" />
+      <workItem from="1693814533088" duration="584000" />
     </task>
     <servers />
   </component>

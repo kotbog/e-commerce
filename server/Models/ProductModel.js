@@ -8,6 +8,9 @@ const ProductModel = new mongoose.Schema({
     desc: {
         type: String
     },
+    images: {
+        type: [String]
+    },
     price: {
         type: Number,
         required: [true, "Price is required"]
@@ -18,28 +21,26 @@ const ProductModel = new mongoose.Schema({
     },
     created_at: {
         type: Date,
-        required: true
+        default: Date.now()
     },
     modified_at: {
         type: Date,
-        required: true
     },
     deleted_at: {
         type: Date,
-        required: true
     },
     category_id: {
         type: mongoose.Types.ObjectId,
-        required: true
+        ref: "ProductCategory"
     },
     inventory_id: {
         type: mongoose.Types.ObjectId,
-        required: true
+        ref: "ProductInventory"
     },
     discount_id: {
         type: mongoose.Types.ObjectId,
-        required: true
+        ref: "Discount"
     }
 });
 
-module.exports = mongoose.model("Product", ProductModel);
+export default mongoose.model("Product", ProductModel);
