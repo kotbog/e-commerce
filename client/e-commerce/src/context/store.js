@@ -4,6 +4,7 @@ import createSagaMiddleware from 'redux-saga'
 import rootSaga from "./rootSaga";
 import SignupReducer from "../features/authentication/context/SignupReducer";
 import ProductsReducer from "../features/products/context/ProductsReducer";
+import ProductProfileReducer from "../features/products/context/ProductProfileReducer";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -11,7 +12,8 @@ const sagaMiddleware = createSagaMiddleware();
 let rootReducer = combineReducers({
     Login: LoginReducer,
     Signup: SignupReducer,
-    Products: ProductsReducer
+    Products: ProductsReducer,
+    ProductProfile: ProductProfileReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

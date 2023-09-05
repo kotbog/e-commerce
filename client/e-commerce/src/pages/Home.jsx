@@ -15,7 +15,6 @@ const Home = () => {
     useEffect(() => {
         dispatch(getProductsAction());
     }, [dispatch]);
-debugger
     return <div className={'container mx-auto'}>
         <div className={'flex justify-around flex-wrap gap-10'}>
             {

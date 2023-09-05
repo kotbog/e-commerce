@@ -2,22 +2,22 @@ import Rating from "./Rating";
 import Button from "../../../components/Button";
 import {useState} from "react";
 
-const ConfigProduct = () => {
+const ConfigProduct = ({name, desc, price}) => {
 
     const [amount, setAmount] = useState(1);
 
     return <div className={'flex flex-col basis-2/5 py-10'}>
-        <h3 className={'font-bold text-2xl'}>Havic HV G-92 Gamepad</h3>
+        <h3 className={'font-bold text-2xl'}>{name}</h3>
         <div className={'flex items-center py-2 justify-start'}>
             <Rating score={4} ratingQuantity={15}/>
             <span className={'block h-7 w-0.5 bg-gray-400 mx-4'}></span>
             <span className={"text-green-500"}>In Stock</span>
         </div>
         <div>
-            <span className={'text-3xl'}>$190</span>
+            <span className={'text-3xl'}>${price}</span>
         </div>
         <div>
-            <p className={'text-justify my-8'}>PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.</p>
+            <p className={'text-justify my-8'}>{desc}</p>
         </div>
         <span className={'block h-0.5 w-full bg-gray-300'}></span>
         <div>

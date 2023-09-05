@@ -15,9 +15,7 @@ router.put('/:id', changeProduct);
 
 router.get('/', getProducts);
 
-
 router.post('/', addProduct);
-
 
 router.post('/category', addCategory);
 
