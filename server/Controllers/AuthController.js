@@ -1,5 +1,5 @@
 import {createToken} from "../util/Token.js";
-import User from "./../Models/UserModel.js";
+import User from "../Models/User.js";
 import bcrypt from "bcrypt";
 
 
@@ -47,7 +47,7 @@ export const LogIn = async (req, res, next) => {
         });
         res
             .status(201)
-            .json({message: "User logged in successfully", success: true});
+            .json({message: "User logged in successfully", success: true, id: user._id});
         next();
     } catch (err) {
         console.error(err);

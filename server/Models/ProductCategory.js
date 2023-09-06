@@ -1,19 +1,12 @@
 import mongoose from "mongoose";
 
-const DiscountModel = new mongoose.Schema({
+const ProductCategory = new mongoose.Schema({
     name: {
         type: String,
         required: true
     },
     desc: {
         type: String
-    },
-    discount_percent: {
-        type: Number
-    },
-    active: {
-        type: Boolean,
-        default: false
     },
     created_at: {
         type: Date,
@@ -27,4 +20,4 @@ const DiscountModel = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model("Discount", DiscountModel);
+export default mongoose.model("ProductCategory", ProductCategory);

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const ProductInventoryModel = new mongoose.Schema({
+const ProductInventory = new mongoose.Schema({
     quantity: {
         type: Number,
         default: 0
@@ -17,4 +17,4 @@ const ProductInventoryModel = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model("ProductInventory", ProductInventoryModel);
+module.exports = mongoose.model("ProductInventory", ProductInventory);

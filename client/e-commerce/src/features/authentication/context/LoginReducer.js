@@ -10,7 +10,8 @@ import {
 let initialState = {
     loading: false,
     loggedIn: false,
-    errorMessage: ''
+    errorMessage: '',
+    user: {}
 };
 
 function loginReducer(state = initialState, action) {
@@ -25,22 +26,10 @@ function loginReducer(state = initialState, action) {
             return {
                 ...state,
                 loading: false,
-                loggedIn: true
-            }
-        }/*
-        case LOG_OUT: {
-            return {
-                ...state,
-                loading: true
+                loggedIn: true,
+                user: {id: action.id}
             }
         }
-        case LOGGED_OUT_SUCCESS: {
-            return {
-                ...state,
-                loading: false,
-                loggedIn: false
-            }
-        }*/
         case LOG_IN_ERROR: {
             return {
                 ...state,
@@ -48,6 +37,7 @@ function loginReducer(state = initialState, action) {
                 errorMessage: action.payload
             }
         }
+
         default: return state;
     }
 }

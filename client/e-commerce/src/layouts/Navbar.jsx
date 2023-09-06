@@ -1,8 +1,24 @@
 import {NavLink} from "react-router-dom";
-import Input from "../components/Input";
 import {useEffect} from "react";
+import {useDispatch} from "react-redux";
+import {verifyUser} from "../features/authentication/context/LoginActions";
+import {useCookies} from "react-cookie";
+
+
 
 const Navbar = () => {
+
+    const dispatch = useDispatch();
+
+    const[cookies, removeCookies] = useCookies([]);
+
+    debugger
+    useEffect(() => {
+        dispatch(verifyUser());
+    }, [dispatch]);
+
+
+
     return <header className={'border-b-2'}>
         <div className={'container mx-auto'}>
             <div className={'flex justify-between py-4 items-center'}>

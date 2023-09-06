@@ -5,6 +5,7 @@ import dotenv from 'dotenv'
 import cookieParser from "cookie-parser";
 import AuthRoute from './Routes/AuthRoute.js'
 import ProductRoute from "./Routes/ProductRoute.js";
+import ShoppingSessionRoute from "./Routes/ShoppingSessionRoute.js";
 
 
 dotenv.config();
@@ -38,4 +39,5 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 app.use("/", AuthRoute);
-app.use("/product", ProductRoute)
+app.use("/product", ProductRoute);
+app.use("/cart", ShoppingSessionRoute);

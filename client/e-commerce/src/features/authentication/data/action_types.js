@@ -18,3 +18,5 @@ export const SET_SIGNUP_DATA = 'SET_SIGNUP_DATA';
 
 export const SET_SIGNUP_ERROR = 'SET_SIGNUP_ERROR';
 
+
+export const VERIFY_USER = 'VERIFY_USER';

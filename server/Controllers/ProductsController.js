@@ -1,7 +1,7 @@
-import ProductModel from '../Models/ProductModel.js'
+import ProductModel from '../Models/Product.js'
 import {convertToBase64} from "../util/ConvertToBase64.js";
 import * as multiparty from 'multiparty';
-import ProductCategoryModel from "../Models/ProductCategoryModel.js";
+import ProductCategoryModel from "../Models/ProductCategory.js";
 
 
 
