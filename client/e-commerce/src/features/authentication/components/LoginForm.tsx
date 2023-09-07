@@ -1,13 +1,13 @@
 import Input from "../../../components/Input";
 import {useFormik} from "formik";
 import Button from "../../../components/Button";
-import {Navigate, NavLink, redirect} from "react-router-dom";
+import {Navigate, NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {logIn} from "../context/LoginActions";
+import {IRootState} from "../data/types";
 
-
-const validate = values => {
-    const errors = {};
+const validate  = (values : {email: string | "", password: string | ""})  => {
+    const errors : {email?: string | "", password?: string | ""} = {};
     if(!values.email) {
         errors.email = 'Required';
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
@@ -19,9 +19,9 @@ const validate = values => {
 const LoginForm = () => {
     const dispatch = useDispatch();
 
-    const loginError = useSelector(state => state.Login.errorMessage);
+    const loginError = useSelector<IRootState, string | undefined>(state => state.Login.errorMessage);
 
-    const loginSuccess = useSelector(state => state.Login.loggedIn);
+    const loginSuccess : boolean = useSelector<IRootState, boolean>(state => state.Login.loggedIn);
 
     const formik = useFormik({
         initialValues: {

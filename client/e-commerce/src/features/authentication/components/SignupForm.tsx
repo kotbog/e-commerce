@@ -4,9 +4,23 @@ import Button from "../../../components/Button";
 import {NavLink, redirect} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {signUpAction} from "../context/SignupActions";
+import {IRootState} from "../data/types";
 
-const validate = values => {
-    const errors = {};
+type ValuesType = {
+    email: string | "",
+    password: string | "",
+    first_name: string | "",
+    last_name: string | ""
+};
+type ErrorsType = {
+    email?: string | "",
+    password?: string | "",
+    first_name?: string | "",
+    last_name?: string | ""
+};
+
+const validate = (values : ValuesType) => {
+    const errors : ErrorsType = {};
     if(!values.email) {
         errors.email = 'Required field';
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
@@ -30,7 +44,7 @@ const SignupForm = () => {
 
     const dispatch = useDispatch();
 
-    const signupSuccess = useSelector(state => state.Signup.success);
+    const signupSuccess = useSelector<IRootState, boolean>(state => state.Signup.success);
 
     const formik = useFormik({
         initialValues: {

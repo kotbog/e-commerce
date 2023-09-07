@@ -1,4 +1,6 @@
-import preloader from '../assets/preloader.svg'
+import React from "react";
+import preloader from "../assets/preloader.svg"
+
 
 const Preloader = () => {
     return <div className={'flex justify-center items-center'}>

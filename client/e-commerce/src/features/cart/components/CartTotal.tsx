@@ -1,5 +1,4 @@
-import Input from "../../../components/Input";
-import Button from "../../../components/Button";
+
 
 const CartTotal = ({subtotal, shipping}) => {
     return <div className={'flex w-full justify-between'}>
