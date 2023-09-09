@@ -1,8 +1,15 @@
 import Rating from "./Rating";
 import Button from "../../../components/Button";
-import {useState} from "react";
+import {FunctionComponent, useState} from "react";
 
-const ConfigProduct = ({name, desc, price}) => {
+
+type ConfigProductProps = {
+    name: string,
+    desc?: string | "",
+    price: number
+};
+
+const ConfigProduct : FunctionComponent<ConfigProductProps> = ({name, desc, price}) => {
 
     const [amount, setAmount] = useState(1);
 

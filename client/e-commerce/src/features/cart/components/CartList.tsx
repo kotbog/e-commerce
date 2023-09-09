@@ -1,7 +1,14 @@
 import CartItem from "./CartItem";
 import Button from "../../../components/Button";
+import {FunctionComponent} from "react";
 
-const CartList = ({items}) => {
+type CartItem = {img:string, price: number, name: string, quantity: number}
+
+type CartListProps = {
+    items: Array<CartItem>
+}
+
+const CartList : FunctionComponent<CartListProps> = ({items}) => {
     return <div>
         <div className={'flex justify-between my-5 py-5 px-10 shadow-md rounded font-semibold text-sm'}>
             <p className={'basis-1/12 text-center'}>Product</p>

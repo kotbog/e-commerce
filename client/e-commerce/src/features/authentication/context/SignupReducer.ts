@@ -1,12 +1,14 @@
-import {SET_SIGNUP_DATA, SET_SIGNUP_ERROR} from "../data/action_types";
+import {SET_SIGNUP_DATA} from "../data/action_types";
+import {SetSignupDataAction} from "../data/types";
 
 let initialState = {
     success: false,
     message: ''
 };
 
+type SignupReducerAction = SetSignupDataAction;
 
-function SignupReducer (state = initialState, action) {
+export default function SignupReducer (state = initialState, action : SignupReducerAction ) {
     switch (action.type) {
         case SET_SIGNUP_DATA: {
             return {
@@ -19,5 +21,3 @@ function SignupReducer (state = initialState, action) {
         default: return state;
     }
 }
-
-export default SignupReducer;

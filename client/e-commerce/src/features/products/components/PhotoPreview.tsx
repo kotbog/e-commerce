@@ -1,6 +1,11 @@
 import preview from '../../../assets/preview.svg'
+import {FunctionComponent} from "react";
 
-const PhotoPreview = ({images}) => {
+type PhotoPreviewProps = {
+    images?: Array<string>
+}
+
+const PhotoPreview : FunctionComponent<PhotoPreviewProps> = ({images}) => {
     return <div className={'flex flex-row basis-3/5'}>
         <div className={'basis-1/5 flex flex-col justify-around'}>
             {images && images.slice(1).map(img => {

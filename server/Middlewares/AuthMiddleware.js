@@ -12,7 +12,7 @@ export const userVerification = (req, res, next) => {
             }
             const user = await User.findOne(data.id);
             if(user) {
-                return res.json({status: true, email: user.email});
+                return res.json({status: true, id: user._id});
             }
             return res.json({status: false});
         })

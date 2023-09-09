@@ -1,17 +1,21 @@
 import Rating from "./Rating";
-import Prod from '../assets/img_1.png'
-import {useState} from "react";
+import {FunctionComponent, useState} from "react";
 import {NavLink} from "react-router-dom";
-import {useDispatch} from "react-redux";
 
 
+type ProductProps = {
+    name: string,
+    price: number,
+    img?: string,
+    id: number | string
+}
 
-const Product = ({name, price, img, id}) => {
+const Product : FunctionComponent<ProductProps> = ({name, price, img, id}) => {
 
     const [animateBtn, setAnimateBtn] = useState(false);
 
 
-    return <div className={'w-64'}>
+    return <div className={'w-64 m-6'}>
         <div className={'relative'}
              onMouseOver={() => {setAnimateBtn(true)}}
              onMouseOut={() => {setAnimateBtn(false)}}

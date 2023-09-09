@@ -1,22 +1,12 @@
 import {NavLink} from "react-router-dom";
-import {useEffect} from "react";
-import {useDispatch} from "react-redux";
-import {verifyUser} from "../features/authentication/context/LoginActions";
-import {useCookies} from "react-cookie";
+// import {useEffect} from "react";
+// import {useDispatch} from "react-redux";
+// import {verifyUser} from "../features/authentication/context/LoginActions";
+//import {useCookies} from "react-cookie";
 
 
 
 const Navbar = () => {
-
-    const dispatch = useDispatch();
-
-    const[cookies, removeCookies] = useCookies([]);
-
-    debugger
-    useEffect(() => {
-        dispatch(verifyUser());
-    }, [dispatch]);
-
 
 
     return <header className={'border-b-2'}>
@@ -24,16 +14,16 @@ const Navbar = () => {
             <div className={'flex justify-between py-4 items-center'}>
                 <div className={'font-bold'}>LOGO</div>
                 <ul className={'flex'}>
-                    <li><NavLink to={'/'} className={'p-5'}>Home</NavLink></li>
-                    <li><NavLink to={'/contact'} className={'p-5'}>Contact</NavLink></li>
-                    <li><NavLink to={'/about'} className={'p-5'}>About</NavLink></li>
-                    <li><NavLink to={'/signup'} className={'p-5'}>Sign Up</NavLink></li>
+                    <li><NavLink to={'/'} className={'p-5'}>Головна</NavLink></li>
+                    <li><NavLink to={'/contact'} className={'p-5'}>Контакти</NavLink></li>
+                    <li><NavLink to={'/about'} className={'p-5'}>Про нас</NavLink></li>
+                    <li><NavLink to={'/signup'} className={'p-5'}>Реєстрація</NavLink></li>
                 </ul>
                 <div className={'flex flex-row items-center gap-4'}>
                     <label className="relative block">
                         <input
                             className="w-full bg-white border border-slate-400 rounded-xl py-2 pl-3 pr-10 focus:outline-none"
-                            placeholder="Search something?" type="text"
+                            placeholder="Шукаєте щось?" type="text"
                         />
                         <span className="absolute inset-y-0 right-0 flex items-center pr-3">
                         <svg className="h-5 w-5 fill-black" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30"

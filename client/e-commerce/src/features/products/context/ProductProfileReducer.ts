@@ -1,4 +1,5 @@
 import {GET_PRODUCT_INFO, SET_PRODUCT_INFO, SET_PRODUCT_INFO_ERROR} from "../data/action_types";
+import {GeProductInfoAction, SetProductAction, SetProductErrorAction} from "../data/types";
 
 let initialState = {
     product: {},
@@ -6,8 +7,8 @@ let initialState = {
     isLoading: false
 };
 
-
-const ProductProfileReducer = (state = initialState, action) => {
+type ProductProfileReducerAction = GeProductInfoAction | SetProductAction | SetProductErrorAction;
+const ProductProfileReducer = (state = initialState, action:ProductProfileReducerAction) => {
     switch (action.type) {
         case GET_PRODUCT_INFO: {
             return {
@@ -16,13 +17,20 @@ const ProductProfileReducer = (state = initialState, action) => {
             }
         }
         case SET_PRODUCT_INFO: {
-            const{_id, name, desc, sku, price, images} = action.payload;
+            const {
+                _id,
+                name,
+                desc,
+                SKU,
+                price,
+                images
+            } = action.payload;
             return {
                 ...state,
                 isLoading: false,
                 product: {
-                id: _id,
-                name, desc, sku, price, images
+                    id: _id,
+                    name, desc, SKU, price, images
                 }
             }
         }

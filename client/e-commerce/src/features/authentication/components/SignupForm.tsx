@@ -1,10 +1,10 @@
 import {useFormik} from "formik";
 import Input from "../../../components/Input";
 import Button from "../../../components/Button";
-import {NavLink, redirect} from "react-router-dom";
+import {Navigate, NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {signUpAction} from "../context/SignupActions";
-import {IRootState} from "../data/types";
+import {signUp} from "../context/SignupActions";
+import {IRootState} from "../../../data/types";
 
 type ValuesType = {
     email: string | "",
@@ -58,12 +58,11 @@ const SignupForm = () => {
 
             const{email, password, first_name, last_name} = values;
 
-            dispatch(signUpAction(email, password, first_name, last_name));
-            debugger
+            dispatch(signUp(email, password, first_name, last_name));
         }
     });
 
-    return signupSuccess ? redirect('/') : <form onSubmit={formik.handleSubmit} className={'flex flex-col m-auto w-64'}>
+    return signupSuccess ?  <Navigate to={'/'}/> : <form onSubmit={formik.handleSubmit} className={'flex flex-col m-auto w-64'}>
         {formik.errors.email && formik.touched.email ? <div className={'text-sm text-red-500'}>{formik.errors.email}</div> : null}
         <Input
             placeholder={'Type your email'}

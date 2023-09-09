@@ -1,11 +1,8 @@
 import {
-    LOG_IN,
     LOG_IN_ERROR,
-    LOG_OUT,
-    LOGGED_IN_SUCCESS,
-    LOGGED_OUT_SUCCESS,
-    SET_LOADING_LOGIN
+    LOGGED_IN_SUCCESS
 } from "../data/action_types";
+import {LoggedInSuccessAction, SetLoginErrorAction} from "../data/types";
 
 let initialState = {
     loading: false,
@@ -13,15 +10,9 @@ let initialState = {
     errorMessage: '',
     user: {}
 };
-
-function loginReducer(state = initialState, action) {
+type LoginReducerAction = LoggedInSuccessAction | SetLoginErrorAction
+function loginReducer(state = initialState, action:LoginReducerAction) {
     switch (action.type) {
-        case SET_LOADING_LOGIN: {
-            return {
-                ...state,
-                loading: true
-            }
-        }
         case LOGGED_IN_SUCCESS: {
             return {
                 ...state,

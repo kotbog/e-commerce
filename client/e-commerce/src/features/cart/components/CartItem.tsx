@@ -1,8 +1,13 @@
-import {useState} from "react";
+import {FunctionComponent, useState} from "react";
 
-const CartItem = ({img, price}) => {
+type CartItemProps = {
+    img?: string,
+    price: number
+}
 
-    const [quantity, setQuantity] = useState(1);
+const CartItem : FunctionComponent<CartItemProps> = ({img, price}) => {
+
+    const [quantity,] = useState(1);
 
     return <li className={'flex justify-between my-5 py-5 px-10 shadow-md rounded font-semibold text-sm w-full items-center'}>
         <span className={'basis-1/12 text-center relative'}>

@@ -4,7 +4,8 @@ import Button from "../../../components/Button";
 import {Navigate, NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {logIn} from "../context/LoginActions";
-import {IRootState} from "../data/types";
+import {IRootState} from "../../../data/types";
+
 
 const validate  = (values : {email: string | "", password: string | ""})  => {
     const errors : {email?: string | "", password?: string | ""} = {};

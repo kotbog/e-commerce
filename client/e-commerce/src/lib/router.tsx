@@ -8,7 +8,7 @@ import Cart from "../pages/Cart";
 
 export const router = createBrowserRouter([
     {
-        element: <Layout />,
+        element: <Layout/>,
         children: [
             {
                 path: '/',

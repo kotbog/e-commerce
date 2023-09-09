@@ -1,10 +1,12 @@
 import Star from "../assets/star.svg";
-import HalfStar from "../assets/half-star.svg";
 import EmptyStar from "../assets/empty-star.svg";
 
-const Rating = ({score, ratingQuantity}) => {
+type RatingProps = {
+    score: number,
+    ratingQuantity: number | string
+}
 
-
+const Rating = ({score, ratingQuantity} : RatingProps) => {
 
     const setRating = () => {
         let content = [];

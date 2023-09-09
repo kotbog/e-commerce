@@ -6,6 +6,12 @@ import SignupReducer from "../features/authentication/context/SignupReducer";
 import ProductsReducer from "../features/products/context/ProductsReducer";
 import ProductProfileReducer from "../features/products/context/ProductProfileReducer";
 
+declare global {
+    interface Window {
+        __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+    }
+}
+
 const sagaMiddleware = createSagaMiddleware();
 
 

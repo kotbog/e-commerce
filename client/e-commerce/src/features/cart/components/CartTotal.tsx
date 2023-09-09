@@ -1,6 +1,11 @@
+import Input from "../../../components/Input";
+import Button from "../../../components/Button";
 
+type CartTotalProps = {
+    subtotal: number, shipping:number
+}
 
-const CartTotal = ({subtotal, shipping}) => {
+const CartTotal = ({subtotal, shipping} : CartTotalProps) => {
     return <div className={'flex w-full justify-between'}>
         <div className={'basis-2/5 flex justify-between items-start'}>
             <Input placeholder={'Coupon Code'} styles={'w-1/2'}/>
