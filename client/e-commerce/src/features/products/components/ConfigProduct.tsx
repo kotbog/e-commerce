@@ -1,15 +1,17 @@
 import Rating from "./Rating";
 import Button from "../../../components/Button";
 import {FunctionComponent, useState} from "react";
+import ColorPicker from "./ColorPicker";
 
 
 type ConfigProductProps = {
     name: string,
     desc?: string | "",
-    price: number
+    price: number,
+    colors?: Array<string>
 };
 
-const ConfigProduct : FunctionComponent<ConfigProductProps> = ({name, desc, price}) => {
+const ConfigProduct : FunctionComponent<ConfigProductProps> = ({name, desc, price, colors}) => {
 
     const [amount, setAmount] = useState(1);
 
@@ -18,22 +20,16 @@ const ConfigProduct : FunctionComponent<ConfigProductProps> = ({name, desc, pric
         <div className={'flex items-center py-2 justify-start'}>
             <Rating score={4} ratingQuantity={15}/>
             <span className={'block h-7 w-0.5 bg-gray-400 mx-4'}></span>
-            <span className={"text-green-500"}>In Stock</span>
+            <span className={"text-green-500"}>В наявності</span>
         </div>
         <div>
             <span className={'text-3xl'}>${price}</span>
         </div>
         <div>
-            <p className={'text-justify my-8'}>{desc}</p>
+            <p className={'text-justify my-8 max-h-52 overflow-auto pr-2 scrollbar'}>{desc}</p>
         </div>
         <span className={'block h-0.5 w-full bg-gray-300'}></span>
-        <div>
-            <h2 className={'text-xl'}>Colors: </h2>
-        </div>
-        <div className={'flex items-center'}>
-            <h2 className={'text-xl'}>Size:</h2>
-            <Button value={'XS'} styles={'focus:bg-red-500 focus:text-white bg-white border-2 border-gray-500 text-black text-xs font-bold w-8 h-8 m-2'}/>
-        </div>
+        <ColorPicker colors={colors}/>
         <div className={'flex flex-col w-32'}>
             <div className={'flex flex-row border-2 items-center justify-start'}>
                 <button
@@ -46,7 +42,7 @@ const ConfigProduct : FunctionComponent<ConfigProductProps> = ({name, desc, pric
                     className={'border-l-2 text-3xl bg-red-500 text-white basis-1/4'}
                 >+</button>
             </div>
-            <Button value={'Buy Now'} styles={'bg-red-500 text-white'}/>
+            <Button value={'Купити'} styles={'bg-red-500 text-white'}/>
         </div>
     </div>
 }

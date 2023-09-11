@@ -5,6 +5,7 @@ import {getProductsAction} from "../features/products/context/ProductsActions";
 import {IRootState} from "../data/types";
 import {Product as ProductType} from "../features/products/data/types"
 import Sidebar from "../features/category/components/Sidebar";
+import Tab from "../components/Tab";
 
 const Home = () => {
 
@@ -27,6 +28,8 @@ const Home = () => {
                 }
             </div>
         </div>
+        {products ? <Tab header={'Наші продукти'} products={products}/> : null}
+
     </div>
 }
 export default Home;

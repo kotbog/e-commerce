@@ -28,7 +28,7 @@ const ProductProfile = () => {
         {product ?
             <div className={'flex'}>
                 <PhotoPreview images={product.images}/>
-                <ConfigProduct name={product.name} desc={product.desc} price={product.price}/>
+                <ConfigProduct name={product.name} desc={product.desc} price={product.price} colors={['green', 'red']}/>
             </div>
             : <p>Product not found</p>
 

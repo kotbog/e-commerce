@@ -15,6 +15,9 @@ const Product = new mongoose.Schema({
         type: Number,
         required: [true, "Price is required"]
     },
+    color: {
+        type: String
+    },
     SKU: {
         type: String,
         required: [true, "SKU is required"]

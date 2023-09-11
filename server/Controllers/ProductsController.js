@@ -29,7 +29,6 @@ export const addProduct = async (req, res, next) => {
             const{name, SKU, price, desc} = fields;
             const{imgs} = files;
             const base64Images = convertToBase64(imgs);
-
             const product = await ProductModel.create({
                 name: name[0],
                 desc: desc[0],
@@ -37,8 +36,7 @@ export const addProduct = async (req, res, next) => {
                 SKU: SKU[0],
                 images: base64Images
             });
-            res.status(201);
-            return res.json({message: "User successfully added"}, product);
+            return res.status(201).json({message: "User successfully added", product});
         })
     } catch (e) {
         console.error(e);
@@ -52,8 +50,7 @@ export const getProducts = async (req, res) => {
         const products = await ProductModel.find(params, 'name price images _id');
 
         if(!products) {
-            res.status(200);
-            return res.json({message: 'Not found such product'});
+            return res.status(201).json({message: 'Not found such product'});
         }
         return res.status(201).json({message: 'Products successfully found', products});
     } catch (e) {
