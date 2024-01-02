@@ -6,7 +6,7 @@ import {useEffect} from "react";
 import {getProductByIdAction} from "../features/products/context/ProductsActions";
 import Preloader from "../components/Preloader";
 import {IRootState} from "../data/types";
-import {Product} from "../features/products/data/types";
+import {Product} from "../data/types";
 
 const ProductProfile = () => {
     let {id} = useParams();

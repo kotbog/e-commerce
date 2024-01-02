@@ -1,14 +1,14 @@
 import {call, put, takeEvery} from "@redux-saga/core/effects"
-import {VERIFY_USER} from "../data/action_types";
-import {loggedInSuccess, logIn, setLoginError} from "./LoginActions";
+import {LOG_IN, VERIFY_USER} from "../data/action_types";
+import {loggedInSuccess, setLoginError} from "./LoginActions";
 import {reqAuth, reqLogIn} from "../services/auth_api";
-import {LoginAction, LogInResponse, VerifyUserResponse} from "../data/types";
+import {LogInAction, LogInResponse, VerifyUserResponse} from "../data/types";
 import {AxiosError} from "axios";
 
 
 
 
-function* loginWorker (action : LoginAction) {
+function* loginWorker (action : LogInAction) {
     const{email, password} = action;
     try {
         const response : LogInResponse = yield call(reqLogIn, email, password);
@@ -34,7 +34,7 @@ export function* verifyUserWorker() {
 }
 
 export function* loginWatcher () {
-    yield takeEvery(logIn, loginWorker);
+    yield takeEvery(LOG_IN, loginWorker);
 }
 
 export function* verifyUserWatcher() {

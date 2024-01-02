@@ -12,6 +12,7 @@ let initialState = {
 };
 type LoginReducerAction = LoggedInSuccessAction | SetLoginErrorAction
 function loginReducer(state = initialState, action:LoginReducerAction) {
+    console.log(action)
     switch (action.type) {
         case LOGGED_IN_SUCCESS: {
             return {

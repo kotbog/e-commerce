@@ -2,8 +2,8 @@ import Input from "../../../components/Input";
 import {useFormik} from "formik";
 import Button from "../../../components/Button";
 import {Navigate, NavLink} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {logIn} from "../context/LoginActions";
+import { useSelector} from "react-redux";
+//import {logIn} from "../context/LoginActions";
 import {IRootState} from "../../../data/types";
 
 
@@ -18,7 +18,7 @@ const validate  = (values : {email: string | "", password: string | ""})  => {
 }
 
 const LoginForm = () => {
-    const dispatch = useDispatch();
+
 
     const loginError = useSelector<IRootState, string | undefined>(state => state.Login.errorMessage);
 
@@ -31,8 +31,8 @@ const LoginForm = () => {
         },
         validate,
         onSubmit: values => {
-            dispatch(logIn(values.email, values.password));
-            console.log('Submitted')
+            //dispatch(logIn(values.email, values.password));
+            console.log('Submitted' + values)
         }
     });
 

@@ -9,12 +9,12 @@ import {
 import {
     GeProductInfoAction,
     GetProductsAction, GetProductsParams,
-    Product,
     SetProductAction,
     SetProductErrorAction,
     SetProductsAction,
     SetProductsErrorAction
 } from "../data/types";
+import {Product} from "../../../data/types";
 
 
 

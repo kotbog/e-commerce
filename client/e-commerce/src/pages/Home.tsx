@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {getProductsAction} from "../features/products/context/ProductsActions";
 import {IRootState} from "../data/types";
-import {Product as ProductType} from "../features/products/data/types"
+import {Product as ProductType} from "../data/types"
 import Sidebar from "../features/category/components/Sidebar";
 import Tab from "../components/Tab";
 

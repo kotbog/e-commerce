@@ -1,5 +1,5 @@
 import {FunctionComponent, useRef} from "react";
-import {Product as ProductType} from "../features/products/data/types";
+import {Product as ProductType} from "../data/types";
 import Product from "../features/products/components/Product";
 import Button from "./Button";
 import Slider from 'react-slick'

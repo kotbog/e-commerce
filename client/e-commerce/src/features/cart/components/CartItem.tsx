@@ -1,13 +1,12 @@
-import {FunctionComponent, useState} from "react";
+import {FunctionComponent} from "react";
 
 type CartItemProps = {
     img?: string,
-    price: number
+    price: number,
+    quantity: number
 }
 
-const CartItem : FunctionComponent<CartItemProps> = ({img, price}) => {
-
-    const [quantity,] = useState(1);
+const CartItem : FunctionComponent<CartItemProps> = ({img, price, quantity}) => {
 
     return <li className={'flex justify-between my-5 py-5 px-10 shadow-md rounded font-semibold text-sm w-full items-center'}>
         <span className={'basis-1/12 text-center relative'}>
@@ -16,7 +15,7 @@ const CartItem : FunctionComponent<CartItemProps> = ({img, price}) => {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
-            <img src={img} alt="product" className={'w-full'}/>
+            <img src={img} alt="product" className={'h-20 m-auto'}/>
         </span>
         <span className={'basis-1/12 text-center'}>${price}</span>
         <span className={'basis-1/12 text-center'}>{quantity}</span>

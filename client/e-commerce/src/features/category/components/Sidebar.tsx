@@ -1,5 +1,5 @@
 import {NavLink} from "react-router-dom";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 const categories = [
     {
@@ -19,7 +19,9 @@ const categories = [
 const Sidebar = () => {
 
     const [subcategories, setSubcategories] = useState<Array<string> | undefined>()
+    useEffect(() => {
 
+    }, []);
     function handleClick (items : Array<string> | undefined, e : React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
         e.preventDefault();
         setSubcategories(items);

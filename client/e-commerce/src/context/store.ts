@@ -5,6 +5,7 @@ import rootSaga from "./rootSaga";
 import SignupReducer from "../features/authentication/context/SignupReducer";
 import ProductsReducer from "../features/products/context/ProductsReducer";
 import ProductProfileReducer from "../features/products/context/ProductProfileReducer";
+import CartReducer from "../features/cart/context/CartReducer";
 
 declare global {
     interface Window {
@@ -19,7 +20,8 @@ let rootReducer = combineReducers({
     Login: LoginReducer,
     Signup: SignupReducer,
     Products: ProductsReducer,
-    ProductProfile: ProductProfileReducer
+    ProductProfile: ProductProfileReducer,
+    Cart: CartReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

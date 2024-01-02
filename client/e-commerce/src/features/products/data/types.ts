@@ -5,15 +5,8 @@ import {
     SET_PRODUCTS,
     SET_PRODUCTS_ERROR
 } from "./action_types";
+import {Product} from "../../../data/types";
 
-export type Product = {
-    name: string,
-    SKU: number | string,
-    desc?: string,
-    _id: string | number,
-    price: number,
-    images?: Array<string>
-}
 
 export type SetProductAction = {
     type: typeof SET_PRODUCT_INFO,

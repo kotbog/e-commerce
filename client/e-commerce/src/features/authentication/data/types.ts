@@ -17,10 +17,7 @@ export type SignupAction = {
 }
 
 
-export type LoginAction = {
-    email: string,
-    password: string
-}
+
 export type VerifyUserResponse = {
     status: boolean,
     id?: string | number

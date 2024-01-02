@@ -1,4 +1,14 @@
-import {Product} from "../features/products/data/types";
+
+export type Product = {
+    name: string,
+    SKU: number | string,
+    desc?: string,
+    _id: string | number,
+    price: number,
+    images?: Array<string>
+}
+
+export type CartItem = Partial<Product> & {quantity: number}
 
 export interface ILoginState {
     loading: boolean,
@@ -20,11 +30,19 @@ export interface IProductProfile {
     isLoading: boolean
 }
 
+interface ICartState  {
+    items: Array<Partial<Product> & {quantity: number}>
+    errorMessage?: string,
+    isLoading: boolean
+}
 
 
 export interface IRootState {
     Login: ILoginState,
     Signup: ISignupState,
     Products: IProducts,
-    ProductProfile: IProductProfile
+    ProductProfile: IProductProfile,
+    Cart: ICartState
 }
+
+
