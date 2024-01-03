@@ -1,8 +1,8 @@
 import {
     LOG_IN_ERROR,
-    LOGGED_IN_SUCCESS
+    LOGGED_IN_SUCCESS, SET_LOADING_AUTH, SET_VERIFY_USER
 } from "../data/action_types";
-import {LoggedInSuccessAction, SetLoginErrorAction} from "../data/types";
+import {LoggedInSuccessAction, setLoadingAuthAction, SetLoginErrorAction, VerifyUserAction} from "../data/types";
 
 let initialState = {
     loading: false,
@@ -10,7 +10,7 @@ let initialState = {
     errorMessage: '',
     user: {}
 };
-type LoginReducerAction = LoggedInSuccessAction | SetLoginErrorAction
+type LoginReducerAction = LoggedInSuccessAction | SetLoginErrorAction | VerifyUserAction | setLoadingAuthAction
 function loginReducer(state = initialState, action:LoginReducerAction) {
     console.log(action)
     switch (action.type) {
@@ -29,7 +29,16 @@ function loginReducer(state = initialState, action:LoginReducerAction) {
                 errorMessage: action.payload
             }
         }
-
+        case SET_VERIFY_USER: {
+            return {
+                ...state,
+                loggedIn: !action.error,
+                user: {id: action.userId}
+            }
+        }
+        case SET_LOADING_AUTH: {
+            return {...state, loading: action.loading}
+        }
         default: return state;
     }
 }

@@ -1,4 +1,11 @@
-import {LOG_IN, LOG_IN_ERROR, LOGGED_IN_SUCCESS, SET_SIGNUP_DATA, SIGN_UP, VERIFY_USER} from "./action_types";
+import {
+    LOG_IN,
+    LOG_IN_ERROR,
+    LOGGED_IN_SUCCESS,
+    SET_LOADING_AUTH,
+    SET_SIGNUP_DATA, SET_VERIFY_USER,
+    SIGN_UP
+} from "./action_types";
 
 
 
@@ -16,12 +23,17 @@ export type SignupAction = {
     }
 }
 
+export type setLoadingAuthAction = {type: typeof SET_LOADING_AUTH, loading: boolean}
 
 
 export type VerifyUserResponse = {
-    status: boolean,
-    id?: string | number
+    error: boolean,
+    message: string,
+    userId?: string,
 }
+
+export type RefreshTokenResponse = VerifyUserResponse;
+
 export type LogInAction = {
     type: typeof LOG_IN,
     email: string,
@@ -36,7 +48,9 @@ export type SetLoginErrorAction = {
     payload: string
 }
 export type VerifyUserAction = {
-    type: typeof VERIFY_USER
+    type: typeof SET_VERIFY_USER
+    error: boolean,
+    userId?: string
 }
 
 export type LogInResponse = {

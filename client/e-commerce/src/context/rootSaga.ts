@@ -1,5 +1,5 @@
 import {all, fork} from "@redux-saga/core/effects";
-import {loginWatcher} from "../features/authentication/context/LoginSaga";
+import {loginWatcher, verifyUserWatcher} from "../features/authentication/context/LoginSaga";
 import {signupWatcher} from "../features/authentication/context/SignupSaga";
 import {rootSagaProducts} from "../features/products/context/ProductsSaga";
 import {rootCartSaga} from "../features/cart/context/CartSaga";
@@ -9,6 +9,7 @@ export default function* rootSaga() {
         fork(rootSagaProducts),
         fork(loginWatcher),
         fork(signupWatcher),
-        fork(rootCartSaga)
+        fork(rootCartSaga),
+        fork(verifyUserWatcher)
     ]);
 }

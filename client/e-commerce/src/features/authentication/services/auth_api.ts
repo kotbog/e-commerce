@@ -22,5 +22,10 @@ export const reqLogIn = async (email : string, password : string) => {
 
 
 export const reqAuth = async () => {
-    return await instance.post<VerifyUserResponse>('/');
+    const res = await instance.get<VerifyUserResponse>('/me');
+    return res.data;
+}
+export const refreshToken = async () => {
+    const res = await instance.post<VerifyUserResponse>('/refresh');
+    return res.data;
 }
