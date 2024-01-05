@@ -1,5 +1,6 @@
 import instance from "../../../lib/axios";
-import {LogInResponse, SignUpResponse, VerifyUserResponse} from "../data/types";
+import {DeleteTokenResponse, LogInResponse, SignUpResponse, VerifyUserResponse} from "../data/types";
+import {data} from "browserslist";
 
 
 export const reqSignUp = async (email : string, password : string, first_name : string, last_name : string) => {
@@ -28,4 +29,8 @@ export const reqAuth = async () => {
 export const refreshToken = async () => {
     const res = await instance.post<VerifyUserResponse>('/refresh');
     return res.data;
+}
+export const deleteToken = async () => {
+    const res = await instance.delete<DeleteTokenResponse>('/refresh');
+    return  res.data;
 }

@@ -1,11 +1,13 @@
 import {
     LOG_IN,
     LOG_IN_ERROR,
-    LOGGED_IN_SUCCESS,
+    LOGGED_IN_SUCCESS, LOGGED_OUT_SUCCESS,
     SET_LOADING_AUTH,
     SET_SIGNUP_DATA, SET_VERIFY_USER,
     SIGN_UP
 } from "./action_types";
+import {User} from "../../../data/types";
+
 
 
 
@@ -29,7 +31,12 @@ export type setLoadingAuthAction = {type: typeof SET_LOADING_AUTH, loading: bool
 export type VerifyUserResponse = {
     error: boolean,
     message: string,
-    userId?: string,
+    user?: User,
+}
+
+export type DeleteTokenResponse = {
+    error: boolean,
+    message: string
 }
 
 export type RefreshTokenResponse = VerifyUserResponse;
@@ -41,7 +48,7 @@ export type LogInAction = {
 }
 export type LoggedInSuccessAction = {
     type: typeof LOGGED_IN_SUCCESS,
-    id: string | number
+    user: User
 }
 export type SetLoginErrorAction = {
     type: typeof LOG_IN_ERROR,
@@ -50,13 +57,17 @@ export type SetLoginErrorAction = {
 export type VerifyUserAction = {
     type: typeof SET_VERIFY_USER
     error: boolean,
-    userId?: string
+    user?: User
+}
+export type LogoutSuccessAction = {
+    type: typeof LOGGED_OUT_SUCCESS,
+    error: boolean
 }
 
 export type LogInResponse = {
     status: number | string,
     data: {
-        id: number | string,
+        user: User,
         message: string
     }
 }

@@ -1,8 +1,8 @@
 import {call, put, takeEvery} from "@redux-saga/core/effects"
-import {LOG_IN, VERIFY_USER} from "../data/action_types";
-import {loggedInSuccess, setLoadingAuth, setLoginError, setVerifyUser} from "./LoginActions";
-import {refreshToken, reqAuth, reqLogIn} from "../services/auth_api";
-import {LogInAction, LogInResponse, RefreshTokenResponse, VerifyUserResponse} from "../data/types";
+import {LOG_IN, LOG_OUT, VERIFY_USER} from "../data/action_types";
+import {loggedInSuccess, logOutSuccess, setLoadingAuth, setLoginError, setVerifyUser} from "./LoginActions";
+import {deleteToken, refreshToken, reqAuth, reqLogIn} from "../services/auth_api";
+import {DeleteTokenResponse, LogInAction, LogInResponse, RefreshTokenResponse, VerifyUserResponse} from "../data/types";
 import {AxiosError} from "axios";
 
 
@@ -13,7 +13,7 @@ function* loginWorker (action : LogInAction) {
     try {
         const response : LogInResponse = yield call(reqLogIn, email, password);
         if(response.status === 200) {
-            yield put(loggedInSuccess(response.data.id))
+            yield put(loggedInSuccess(response.data.user))
         } else {
             yield put(setLoginError(response.data.message));
         }
@@ -27,10 +27,21 @@ export function* verifyUserWorker() {
     try {
         yield put(setLoadingAuth(true));
         let res : VerifyUserResponse = yield call(reqAuth);
-        if(res.error) {
-            res = yield call(refreshToken);
-        }
-        yield put(setVerifyUser({userId: res.userId, error: res.error}));
+        res = res.error ? yield call(refreshToken) : res;
+        yield put(setVerifyUser({user: res.user, error: res.error}));
+        yield put(setLoadingAuth(false));
+    } catch (e) {
+        if(e instanceof AxiosError) yield put(setLoginError(e.message));
+        else if(typeof e === "string") yield put(setLoginError(e));
+    }
+}
+
+export function* logOutWorker() {
+    try {
+        yield put(setLoadingAuth(true));
+        let res : DeleteTokenResponse = yield call(deleteToken);
+        if(!res.error) yield put(logOutSuccess());
+        else yield setLoginError("Logout error");
         yield put(setLoadingAuth(false));
     } catch (e) {
         if(e instanceof AxiosError) yield put(setLoginError(e.message));
@@ -44,4 +55,12 @@ export function* loginWatcher () {
 
 export function* verifyUserWatcher() {
     yield takeEvery(VERIFY_USER, verifyUserWorker);
+}
+
+export function* logOutWathcer() {
+    yield takeEvery(LOG_OUT, logOutWorker)
+}
+
+export function* rootLoginSaga() {
+
 }

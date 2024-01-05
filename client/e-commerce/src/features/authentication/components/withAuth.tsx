@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {IRootState} from "@/src/data/types";
+import {IRootState} from "../../../data/types";
 import {ComponentType, FC, useEffect} from "react";
 import {verifyUser} from "../context/LoginActions";
 import Preloader from "../../../components/Preloader";

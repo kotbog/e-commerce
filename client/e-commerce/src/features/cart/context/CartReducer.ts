@@ -1,27 +1,29 @@
-import {GET_CART_ITEMS, SET_CART_ERROR_MESSAGE, SET_CART_ITEMS} from "../data/action_types";
+import {GET_CART_ITEMS, SET_CART_ERROR_MESSAGE, SET_CART_ITEMS, SET_LOADING_CART} from "../data/action_types";
 import {Product} from "../../../data/types";
-import {GetCartItemsAction, SetCartErrorMessageAction, SetCartItemsAction} from "../data/types";
+import {GetCartItemsAction, SetCartErrorMessageAction, SetCartItemsAction, SetLoadingCartAction} from "../data/types";
 
 let initialState = {
-    items: Array<Partial<Product> & {quantity: number}>,
+    items: [] as Array<Partial<Product> & {quantity: number}>,
     errorMessage: '',
     isLoading: false
 };
 
-type CartReducerAction = SetCartItemsAction | GetCartItemsAction | SetCartErrorMessageAction;
+if(localStorage.getItem('cart-items')) {
+    initialState.items = JSON.parse(localStorage.getItem('cart-items') as string);
+}
+
+type CartReducerAction = SetCartItemsAction | GetCartItemsAction | SetCartErrorMessageAction | SetLoadingCartAction;
 export default function CartReducer (state = initialState, action : CartReducerAction) {
     switch (action.type) {
         case SET_CART_ITEMS: {
             return {
                 ...state,
-                items: action.products,
-                isLoading: false
+                items: action.products
             }
         }
         case GET_CART_ITEMS: {
             return {
-                ...state,
-                isLoading: true
+                ...state
             }
         }
         case SET_CART_ERROR_MESSAGE : {
@@ -29,6 +31,12 @@ export default function CartReducer (state = initialState, action : CartReducerA
                 ...state,
                 errorMessage: action.message,
                 isLoading: false
+            }
+        }
+        case SET_LOADING_CART: {
+            return {
+                ...state,
+                isLoading: action.loading
             }
         }
         default: {

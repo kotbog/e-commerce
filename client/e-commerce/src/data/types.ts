@@ -7,14 +7,27 @@ export type Product = {
     price: number,
     images?: Array<string>
 }
+export type User = {
+    first_name: string,
+    last_name: string,
+    email: string,
+    telephone?: string,
+    address?: string
+}
+
 
 export type CartItem = Partial<Product> & {quantity: number}
+
+export type initResponse = {
+    error: boolean,
+    message: string
+}
 
 export interface ILoginState {
     loading: boolean,
     loggedIn: boolean,
     errorMessage?: string,
-    user?: Object
+    user?: User
 }
 export interface ISignupState {
     success: boolean,

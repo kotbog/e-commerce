@@ -21,7 +21,7 @@ const CartList : FunctionComponent<CartListProps> = ({items}) => {
             <p className={'basis-1/12 text-center'}>Subtotal</p>
         </div>
         <ul className={'flex w-full flex-col'}>
-            {items ?
+            {items && items[0] ?
                 items.map(item => <CartItem quantity={item.quantity} price={item.price as number} img={item.images ? item.images : SVG}/>)
             :   <h2>Cart is empty!</h2>
             }

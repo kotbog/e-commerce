@@ -8,15 +8,18 @@ import Preloader from "../components/Preloader";
 const Cart = () => {
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(getCartItems("64eef259db191b86e899d210"))
+        if(!localStorage.getItem('cart-items')) dispatch(getCartItems("64eef259db191b86e899d210"))
     }, [dispatch]);
     const items =
         useSelector<IRootState,Array<CartItem>>
         ((state) => state.Cart.items);
+
     if(!items && items[0]) return <Preloader/>
+
+
     return <div className={'container m-auto'}>
         <CartList items={items}/>
-        <CartTotal shipping={10} subtotal={120}/>
+        <CartTotal shipping={10} subtotal={120} final={false}/>
     </div>
 }
 
