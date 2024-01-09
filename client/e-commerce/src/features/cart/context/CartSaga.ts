@@ -1,11 +1,17 @@
 import {all, call, put, spawn, take, takeEvery} from "@redux-saga/core/effects";
-import {ADD_ITEM_TO_CART_AUTH, ADD_ITEM_TO_CART_LOCAL, GET_CART_ITEMS, SEND_ORDER} from "../data/action_types";
+import {
+    ADD_ITEM_TO_CART_AUTH,
+    ADD_ITEM_TO_CART_LOCAL,
+    GET_CART_ITEMS,
+    REMOVE_CART_ITEM_LOCAL,
+    SEND_ORDER
+} from "../data/action_types";
 import {
     addCartItemAuthAction,
     addCartItemLocalAction,
     addCartItemResponse,
     CartItems,
-    GetCartItemsAction, sendOrderAction, sendOrderDataResponse
+    GetCartItemsAction, removeCartItemAction, sendOrderAction, sendOrderDataResponse
 } from "../data/types";
 import {addItemToCart, getCartItems, sendOrderItems} from "../services/cart_api";
 import {getCartItems as getCartAction} from '../context/CartActions'
@@ -83,6 +89,27 @@ function* addToCartAuthWorker({product, userId}: addCartItemAuthAction) {
     }
 }
 
+function* removeItemLocalWorker(action : removeCartItemAction) {
+    try {
+        yield put(setLoadingCart(true));
+        let items : Array<Product & {quantity: number |string}> = localStorage.getItem('cart-items')
+            ? JSON.parse(localStorage.getItem('cart-items') as string)
+            : [];
+        const newItems = items.filter(item => {
+            if(item._id !== action.id) {
+                return item;
+            }
+        })
+        yield put(setCartItems(newItems));
+        localStorage.setItem('cart-items', JSON.stringify(newItems));
+        yield put(setLoadingCart(false));
+    } catch (e) {
+        if(e instanceof AxiosError) {
+            yield put(setCartErrorMessage(e.message));
+        }else if (typeof e === "string") yield put(setCartErrorMessage(e))
+    }
+}
+
 export function* sendOrderDataWorker(action : sendOrderAction) {
     try {
         yield put(setLoadingCart(true));
@@ -115,8 +142,9 @@ export function* addCartItemLocalWatcher() {
 export function* addCartItemAuthWatcher() {
     yield takeEvery(ADD_ITEM_TO_CART_AUTH, addToCartAuthWorker);
 }
-
-
+export function* removeCartItemWatcher() {
+    yield takeEvery(REMOVE_CART_ITEM_LOCAL, removeItemLocalWorker);
+}
 
 
 export function* rootCartSaga() {
@@ -125,5 +153,6 @@ export function* rootCartSaga() {
         spawn(addCartItemLocalWatcher),
         spawn(addCartItemAuthWatcher),
         spawn(sendOrderWatcher),
+        spawn(removeCartItemWatcher),
     ])
 }

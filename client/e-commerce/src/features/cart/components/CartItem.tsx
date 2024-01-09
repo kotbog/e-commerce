@@ -1,16 +1,18 @@
 import {FunctionComponent} from "react";
+import {useDispatch} from "react-redux";
+
 
 type CartItemProps = {
     img?: string,
     price: number,
-    quantity: number
+    quantity: number,
+    removeFunc: () => void
 }
 
-const CartItem : FunctionComponent<CartItemProps> = ({img, price, quantity}) => {
-
+const CartItem : FunctionComponent<CartItemProps> = ({img, price, quantity, removeFunc}) => {
     return <li className={'flex justify-between my-5 py-5 px-10 shadow-md rounded font-semibold text-sm w-full items-center'}>
         <span className={'basis-1/12 text-center relative'}>
-            <button className={'absolute right-0 -top-2 bg-red-500 rounded-full'}>
+            <button className={'absolute right-0 -top-2 bg-red-500 rounded-full'} onClick={removeFunc}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="white" className="w-5 h-5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>

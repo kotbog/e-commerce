@@ -2,7 +2,7 @@ import {GET_CART_ITEMS, SET_CART_ERROR_MESSAGE, SET_CART_ITEMS, SET_LOADING_CART
 import {Product} from "../../../data/types";
 import {
     CartItems,
-    GetCartItemsAction, sendOrderAction,
+    GetCartItemsAction, removeCartItemAction, sendOrderAction,
     SetCartErrorMessageAction,
     SetCartItemsAction,
     SetLoadingCartAction

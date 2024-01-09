@@ -29,6 +29,7 @@ export type GetProductsParams = {
     desc?: string,
     _id?: string | number,
     price?: number,
+    category?: string,
     images?: Array<string>
 }
 

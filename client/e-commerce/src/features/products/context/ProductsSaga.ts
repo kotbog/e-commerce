@@ -8,7 +8,9 @@ import {AxiosError} from "axios";
 
 function* getProductsWorker (action : GetProductsAction) {
     try {
+
         const response : GetProductsResponse = yield call(getProducts, action.payload);
+        console.log(response)
         yield put(setProducts(response.products));
     } catch (e) {
         if(e instanceof AxiosError)  yield put(setErrorMessage(e.message))

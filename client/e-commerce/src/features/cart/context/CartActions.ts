@@ -2,6 +2,7 @@ import {
     ADD_ITEM_TO_CART_AUTH,
     ADD_ITEM_TO_CART_LOCAL,
     GET_CART_ITEMS,
+    REMOVE_CART_ITEM_LOCAL,
     SEND_ORDER,
     SET_CART_ERROR_MESSAGE,
     SET_CART_ITEMS,
@@ -10,8 +11,10 @@ import {
 import {Product, User} from "../../../data/types";
 import {
     addCartItemAuthAction,
-    addCartItemLocalAction, CartItems,
+    addCartItemLocalAction,
+    CartItems,
     GetCartItemsAction,
+    removeCartItemAction,
     sendOrderAction,
     SetCartErrorMessageAction,
     SetCartItemsAction,
@@ -44,3 +47,5 @@ export const addCartItemAuth = (product : Product & {quantity: string | number},
 export const sendOrderData = ({user,cartItems}:  {cartItems: CartItems, user: Partial<User>}) : sendOrderAction => {
     return {type: SEND_ORDER, payload: {cartItems, user}}
 }
+
+export const removeCartItem = (id: string) : removeCartItemAction => ({type: REMOVE_CART_ITEM_LOCAL, id})

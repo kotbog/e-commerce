@@ -20,9 +20,9 @@ const Home = () => {
         dispatch(getProductsAction({}));
     }, [dispatch]);
     return <div className={'container mx-auto'}>
-        <div className={'flex'}>
+        <div className={'flex w-full'}>
             <Sidebar />
-            <div className={'flex justify-around flex-wrap gap-10'}>
+            <div className={'flex justify-around flex-wrap gap-10 w-full'}>
                 {
                     products && products.map(product => <Product key={product._id} SKU={product.SKU}  name={product.name} price={product.price} img={product.images && product.images[0]} id={product._id}/>)
                 }

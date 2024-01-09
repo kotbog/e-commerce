@@ -50,13 +50,20 @@ interface ICartState  {
     isLoading: boolean
 }
 
+interface ICategoryState {
+    categories: Array<{name:string, _id: string}>,
+    loading: boolean,
+    errorMessage?: string
+}
+
 
 export interface IRootState {
     Login: ILoginState,
     Signup: ISignupState,
     Products: IProducts,
     ProductProfile: IProductProfile,
-    Cart: ICartState
+    Cart: ICartState,
+    Category: ICategoryState
 }
 
 

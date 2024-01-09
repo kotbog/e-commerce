@@ -21,10 +21,25 @@ const Cart = () => {
 
     if(loading) return <Preloader/>
 
+    function calcTotal() {
+        let total = 0;
+
+        if(items && items[0]) {
+            items.map(item => {
+                if(item.price) total += item.price * item.quantity;
+                else total += 0 * item.quantity;
+            })
+        } else {
+            return 0;
+        }
+        return total;
+
+    }
+
     return <div className={'container m-auto'}>
         <div className={'min-h-full'}>
             <CartList items={items}/>
-            <CartTotal shipping={10} subtotal={120} final={false}/>
+            <CartTotal shipping={10} subtotal={calcTotal()} final={false}/>
         </div>
 
     </div>

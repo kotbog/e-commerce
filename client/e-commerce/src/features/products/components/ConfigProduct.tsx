@@ -8,12 +8,13 @@ type ConfigProductProps = {
     name: string,
     desc?: string | "",
     price: number,
-    colors?: Array<string>
+    colors?: Array<string>,
+    onChangeAmount: (value : number) => void,
+    amount: number
 };
 
-const ConfigProduct : FunctionComponent<ConfigProductProps> = ({name, desc, price, colors}) => {
+const ConfigProduct : FunctionComponent<ConfigProductProps> = ({name, desc, price, colors, onChangeAmount, amount}) => {
 
-    const [amount, setAmount] = useState(1);
 
     return <div className={'flex flex-col basis-2/5 py-10'}>
         <h3 className={'font-bold text-2xl'}>{name}</h3>
@@ -33,16 +34,15 @@ const ConfigProduct : FunctionComponent<ConfigProductProps> = ({name, desc, pric
         <div className={'flex flex-col w-32'}>
             <div className={'flex flex-row border-2 items-center justify-start'}>
                 <button
-                    onClick={() => {if(amount > 1) setAmount(amount - 1)}}
+                    onClick={() => {if(amount > 1) onChangeAmount(amount - 1)}}
                     className={'border-r-2 text-3xl basis-1/4'}
                 >-</button>
                 <input type="text" className={'basis-1/2 outline-0 text-center box-border w-full'} value={amount} />
                 <button
-                    onClick={() => {setAmount(amount + 1)}}
+                    onClick={() => {onChangeAmount(amount + 1)}}
                     className={'border-l-2 text-3xl bg-red-500 text-white basis-1/4'}
                 >+</button>
             </div>
-            <Button value={'Купити'} styles={'bg-red-500 text-white'}/>
         </div>
     </div>
 }

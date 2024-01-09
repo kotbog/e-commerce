@@ -6,6 +6,7 @@ import SignupReducer from "../features/authentication/context/SignupReducer";
 import ProductsReducer from "../features/products/context/ProductsReducer";
 import ProductProfileReducer from "../features/products/context/ProductProfileReducer";
 import CartReducer from "../features/cart/context/CartReducer";
+import CategoryReducer from "../features/category/context/CategoryReducer";
 
 declare global {
     interface Window {
@@ -21,7 +22,8 @@ let rootReducer = combineReducers({
     Signup: SignupReducer,
     Products: ProductsReducer,
     ProductProfile: ProductProfileReducer,
-    Cart: CartReducer
+    Cart: CartReducer,
+    Category: CategoryReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

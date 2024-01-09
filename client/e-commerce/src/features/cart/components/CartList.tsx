@@ -3,6 +3,8 @@ import Button from "../../../components/Button";
 import {FunctionComponent} from "react";
 import SVG from '../../../assets/preview.svg'
 import {CartItem as CartItemType} from '../../../data/types'
+import {useDispatch} from "react-redux";
+import {removeCartItem} from "../context/CartActions";
 
 
 
@@ -11,7 +13,7 @@ type CartListProps = {
 }
 
 const CartList : FunctionComponent<CartListProps> = ({items}) => {
-
+    const dispatch = useDispatch();
 
     return <div>
         <div className={'flex justify-between my-5 py-5 px-10 shadow-md rounded font-semibold text-sm'}>
@@ -22,7 +24,7 @@ const CartList : FunctionComponent<CartListProps> = ({items}) => {
         </div>
         <ul className={'flex w-full flex-col'}>
             {items && items[0] ?
-                items.map(item => <CartItem key={item._id} quantity={item.quantity} price={item.price as number} img={item.images ? item.images : SVG}/>)
+                items.map(item => <CartItem removeFunc={() => {dispatch(removeCartItem(item._id as string))}} key={item._id} quantity={item.quantity} price={item.price as number} img={item.images ? item.images[0] : SVG}/>)
             :   <h2>Cart is empty!</h2>
             }
         </ul>

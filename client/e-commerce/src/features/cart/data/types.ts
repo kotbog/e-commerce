@@ -1,7 +1,7 @@
 import {
     ADD_ITEM_TO_CART_AUTH,
     ADD_ITEM_TO_CART_LOCAL,
-    GET_CART_ITEMS, SEND_ORDER,
+    GET_CART_ITEMS, REMOVE_CART_ITEM_LOCAL, SEND_ORDER,
     SET_CART_ERROR_MESSAGE,
     SET_CART_ITEMS, SET_LOADING_CART
 } from "./action_types";
@@ -26,3 +26,5 @@ export type addCartItemResponse = {data: {} & initResponse};
 export type sendOrderDataResponse = {data: {} & initResponse}
 
 export type sendOrderAction = {type: typeof SEND_ORDER, payload: {user: Partial<User>, cartItems: CartItems}}
+
+export type removeCartItemAction = { type: typeof REMOVE_CART_ITEM_LOCAL, id: string}
