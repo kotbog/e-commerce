@@ -7,7 +7,7 @@ import Button from "../components/Button";
 const Checkout = () => {
     const user = useSelector<IRootState, User | undefined>(state => state.Login.user);
 
-    return <div className={'min-h-screen container m-auto flex'}>
+    return <div className={'min-h-screen container m-auto flex flex-wrap'}>
         {!user ? <CheckoutForm/> :
             <div className={'basis-1/2'}>
                 <span><h2 className={'font-semibold'}>First name: </h2>{user.first_name}</span>
@@ -18,7 +18,7 @@ const Checkout = () => {
                 <Button value={'Confirm'} styles={'bg-red-600 text-white'}/>
             </div>
         }
-        <div className={'basis-1/2'}>
+        <div className={'basis-1/2 flex-grow'}>
             <CartTotal subtotal={140} shipping={10} final={true}/>
         </div>
     </div>

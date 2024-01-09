@@ -1,5 +1,7 @@
 import instance from "../../../lib/axios";
-import {addCartItemResponse} from "../data/types";
+import {addCartItemResponse, CartItems} from "../data/types";
+import {User} from "../../../data/types";
+import {response} from "express";
 
 
 export const getCartItems = async (id: string) => {
@@ -11,4 +13,8 @@ export const addItemToCart = async (payload: {userId: string, product: {id: stri
     : Promise<addCartItemResponse>=> {
     const response = await instance.post('/cart/items', {data:{userId: payload.userId, product: payload.product}});
     return response.data;
+}
+
+export const sendOrderItems = async (payload: {user: User, items: CartItems}) => {
+    return await instance.post('/cart/checkout', {data: {payload}});
 }

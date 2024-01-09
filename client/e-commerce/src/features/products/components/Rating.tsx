@@ -12,9 +12,9 @@ const Rating = ({score, ratingQuantity} : RatingProps) => {
         let content = [];
         for (let i = 0, j = score; i < score || j < 5; i++) {
             if(i < score) {
-                content.push(<img src={Star} alt="star"/>);
+                content.push(<img key={i} src={Star} alt="star"/>);
             } else {
-                content.push(<img src={EmptyStar} alt="star"/>);
+                content.push(<img key={i} src={EmptyStar} alt="star"/>);
                 j++;
             }
         }

@@ -7,6 +7,7 @@ import ProductProfile from "../pages/ProductProfile";
 import Cart from "../pages/Cart";
 import Account from "../pages/Account";
 import Checkout from "../pages/Checkout";
+import Success from "../pages/Success";
 
 export const router = createBrowserRouter([
     {
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
             {
                 path: '/cart/checkout',
                 element: <Checkout/>
+            },
+            {
+                path: '/cart/success',
+                element: <Success/>
             }
         ]
     }

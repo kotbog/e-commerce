@@ -9,8 +9,14 @@ import {
     SetLoginErrorAction,
     VerifyUserAction
 } from "../data/types";
+import {User} from "../../../data/types";
 
-let initialState = {
+let initialState : {
+    loading: boolean,
+    loggedIn: boolean,
+    errorMessage: string,
+    user: null | User
+} = {
     loading: false,
     loggedIn: false,
     errorMessage: '',

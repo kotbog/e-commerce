@@ -20,16 +20,14 @@ const Sidebar = () => {
 
     const [subcategories, setSubcategories] = useState<Array<string> | undefined>()
     useEffect(() => {
-
     }, []);
     function handleClick (items : Array<string> | undefined, e : React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
         e.preventDefault();
         setSubcategories(items);
     }
 
-
     return <ul className={'border-r-2 flex flex-col basis-1/4'}>
-        {!subcategories ? categories.map(item => <li
+        {!subcategories ? categories.map(item => <li key={item.id}
                 className={'font-semibold'}>
                 <NavLink className={'flex justify-between p-2'} to={'/category/' + item.id} onClick={(e) => item.sub_cat && handleClick(item.sub_cat, e)}>
                     {item.name}

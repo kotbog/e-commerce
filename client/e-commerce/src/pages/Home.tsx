@@ -6,13 +6,13 @@ import {IRootState} from "../data/types";
 import {Product as ProductType} from "../data/types"
 import Sidebar from "../features/category/components/Sidebar";
 import Tab from "../components/Tab";
+import {state} from "sucrase/dist/types/parser/traverser/base";
 
 const Home = () => {
 
     const dispatch = useDispatch();
 
     const products = useSelector<IRootState, Array<ProductType> | undefined>((state) => state.Products.products);
-
     //const error = useSelector<IRootState, string | undefined>(state => state.Products.errorMessage);
     console.log(products)
 
@@ -24,7 +24,7 @@ const Home = () => {
             <Sidebar />
             <div className={'flex justify-around flex-wrap gap-10'}>
                 {
-                    products && products.map(product => <Product name={product.name} price={product.price} img={product.images && product.images[0]} id={product._id}/>)
+                    products && products.map(product => <Product key={product._id} SKU={product.SKU}  name={product.name} price={product.price} img={product.images && product.images[0]} id={product._id}/>)
                 }
             </div>
         </div>

@@ -22,7 +22,7 @@ const CartList : FunctionComponent<CartListProps> = ({items}) => {
         </div>
         <ul className={'flex w-full flex-col'}>
             {items && items[0] ?
-                items.map(item => <CartItem quantity={item.quantity} price={item.price as number} img={item.images ? item.images : SVG}/>)
+                items.map(item => <CartItem key={item._id} quantity={item.quantity} price={item.price as number} img={item.images ? item.images : SVG}/>)
             :   <h2>Cart is empty!</h2>
             }
         </ul>

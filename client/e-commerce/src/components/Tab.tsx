@@ -48,7 +48,7 @@ const Tab : FunctionComponent<TabProps> = ({header, products}) => {
             <div>
                 <Slider ref={slider} {...settings}>
                 {
-                    products.map(product => <Product name={product.name} price={product.price} id={product._id} img={product.images && product.images[0]}/>)
+                    products.map(product => <Product SKU={product.SKU} key={product._id} name={product.name} price={product.price} id={product._id} img={product.images && product.images[0]}/>)
                 }
                 </Slider>
             </div>

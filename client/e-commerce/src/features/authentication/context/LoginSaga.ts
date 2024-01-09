@@ -1,6 +1,6 @@
-import {call, put, takeEvery} from "@redux-saga/core/effects"
+import {all, call, put, spawn, takeEvery} from "@redux-saga/core/effects"
 import {LOG_IN, LOG_OUT, VERIFY_USER} from "../data/action_types";
-import {loggedInSuccess, logOutSuccess, setLoadingAuth, setLoginError, setVerifyUser} from "./LoginActions";
+import {loggedInSuccess, logOutSuccess, setLoadingAuth, setLoginError, setVerifyUser, verifyUser} from "./LoginActions";
 import {deleteToken, refreshToken, reqAuth, reqLogIn} from "../services/auth_api";
 import {DeleteTokenResponse, LogInAction, LogInResponse, RefreshTokenResponse, VerifyUserResponse} from "../data/types";
 import {AxiosError} from "axios";
@@ -25,9 +25,16 @@ function* loginWorker (action : LogInAction) {
 
 export function* verifyUserWorker() {
     try {
+        console.log('saga');
         yield put(setLoadingAuth(true));
         let res : VerifyUserResponse = yield call(reqAuth);
+
         res = res.error ? yield call(refreshToken) : res;
+        console.log("res: " + res.user);
+        if(res.error) {
+            yield put(setLoginError(res.message));
+            return;
+        }
         yield put(setVerifyUser({user: res.user, error: res.error}));
         yield put(setLoadingAuth(false));
     } catch (e) {
@@ -57,10 +64,14 @@ export function* verifyUserWatcher() {
     yield takeEvery(VERIFY_USER, verifyUserWorker);
 }
 
-export function* logOutWathcer() {
+export function* logOutWatcher() {
     yield takeEvery(LOG_OUT, logOutWorker)
 }
 
 export function* rootLoginSaga() {
-
+    yield all([
+        spawn(logOutWatcher),
+        spawn(verifyUserWatcher),
+        spawn(loginWatcher),
+    ])
 }

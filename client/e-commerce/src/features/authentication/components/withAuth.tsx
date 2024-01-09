@@ -14,10 +14,9 @@ function withAuth<T>(WrappedComponent: ComponentType<T>)  {
         console.log(verified)
         useEffect(() => {
             dispatch(verifyUser());
+            console.log('verified')
         }, [dispatch]);
         if (loading) return <Preloader/>
-
-        if(!verified && !loading) return <div>Not logged in</div>
 
         return <WrappedComponent {...props}/>
     }

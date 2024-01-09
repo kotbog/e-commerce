@@ -5,7 +5,9 @@ import Footer from "./Footer";
 const Layout = () => {
     return <div>
         <Navbar />
-        <Outlet />
+        <div className={'min-h-dvh'}>
+            <Outlet />
+        </div>
         <Footer />
     </div>
 }
