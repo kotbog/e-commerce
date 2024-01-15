@@ -10,7 +10,7 @@ export const LOG_IN_ERROR = 'LOG_IN_ERROR';
 
 export const SET_LOADING_AUTH = 'SET_LOADING_AUTH';
 
-
+export const SET_AUTH_ERROR = 'SET_AUTH_ERROR';
 
 export const SIGN_UP = 'SIGN_UP';
 

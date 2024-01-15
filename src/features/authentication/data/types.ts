@@ -1,7 +1,7 @@
 import {
     LOG_IN,
     LOG_IN_ERROR,
-    LOGGED_IN_SUCCESS, LOGGED_OUT_SUCCESS,
+    LOGGED_IN_SUCCESS, LOGGED_OUT_SUCCESS, SET_AUTH_ERROR,
     SET_LOADING_AUTH,
     SET_SIGNUP_DATA, SET_VERIFY_USER,
     SIGN_UP
@@ -27,6 +27,7 @@ export type SignupAction = {
 
 export type setLoadingAuthAction = {type: typeof SET_LOADING_AUTH, loading: boolean}
 
+export type SetAuthErrorAction = {type: typeof SET_AUTH_ERROR, message: string}
 
 export type VerifyUserResponse = {
     error: boolean,
@@ -75,4 +76,5 @@ export type SignUpResponse = {
     message: string,
     success: boolean
 }
+
 

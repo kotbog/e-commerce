@@ -49,7 +49,7 @@ const ProductProfile = () => {
                         onChangeAmount={(value=> {setAmount(value)})}
                         amount={amount}
                     />
-                    <Button onClick={() => { handlePurchase(product)} } value={'Купити'} styles={'bg-red-500 text-white'}/>
+                    <Button onClick={() => { handlePurchase(product)} } value={'Add to cart'} styles={'bg-red-500 text-white'}/>
                 </div>
             </div>
             : <p>Product not found</p>

@@ -81,8 +81,7 @@ const CheckoutForm = () => {
     });
     return <div className={'basis-1/2'}>
     <form className={'flex flex-col w-80 m-auto'} onSubmit={formik.handleSubmit}>
-        {formik.errors.first_name && formik.touched.first_name ? <div className={'text-sm text-red-500'}>{formik.errors.first_name}</div> : null}
-        <label className={'font-semibold flex flex-col'}>First name
+        <label className={'font-semibold flex flex-col text-gray-500 text-sm'}>First name
             <Input
                 placeholder={'Enter your name...'}
                 name={'first_name'}
@@ -92,8 +91,9 @@ const CheckoutForm = () => {
                 inValid={formik.errors.first_name && formik.touched.first_name}
             />
         </label>
-        {formik.errors.last_name && formik.touched.last_name ? <div className={'text-sm text-red-500'}>{formik.errors.last_name}</div> : null}
-        <label className={'font-semibold flex flex-col'}>Last name
+        {formik.errors.first_name && formik.touched.first_name ? <div className={'text-red-500 mb-3 text-sm'}>{formik.errors.first_name}</div> : null}
+
+        <label className={'font-semibold flex flex-col text-sm text-gray-500'}>Last name
             <Input
                 placeholder={'Enter your last name...'}
                 name={'last_name'}
@@ -101,11 +101,12 @@ const CheckoutForm = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 inValid={formik.errors.last_name && formik.touched.last_name}
-                className={'w-full'}
+                className={'w-full text-sm'}
             />
         </label>
-        {formik.errors.address && formik.touched.address ? <div className={'text-sm text-red-500'}>{formik.errors.address}</div> : null}
-        <label className={'font-semibold flex flex-col'}>Address
+        {formik.errors.last_name && formik.touched.last_name ? <div className={'text-red-500 mb-3 text-sm'}>{formik.errors.last_name}</div> : null}
+
+        <label className={'font-semibold flex flex-col text-sm text-gray-500'}>Address
             <Input
                 placeholder={'Enter your address...'}
                 name={'address'}
@@ -116,8 +117,9 @@ const CheckoutForm = () => {
                 className={'w-full'}
             />
         </label>
-        {formik.errors.telephone && formik.touched.telephone ? <div className={'text-sm text-red-500'}>{formik.errors.telephone}</div> : null}
-        <label className={'font-semibold flex flex-col'}>Phone number
+        {formik.errors.address && formik.touched.address ? <div className={'text-red-500 mb-3 text-sm '}>{formik.errors.address}</div> : null}
+
+        <label className={'font-semibold flex flex-col text-sm text-gray-500'}>Phone number
             <Input
                 placeholder={'Enter your telephone...'}
                 name={'telephone'}
@@ -128,8 +130,9 @@ const CheckoutForm = () => {
                 className={'w-full'}
             />
         </label>
-        {formik.errors.email && formik.touched.email ? <div className={'text-sm text-red-500'}>{formik.errors.email}</div> : null}
-        <label className={'font-semibold flex flex-col'}>E-mail
+        {formik.errors.telephone && formik.touched.telephone ? <div className={'text-red-500 mb-3 text-sm '}>{formik.errors.telephone}</div> : null}
+
+        <label className={'font-semibold flex flex-col text-sm text-gray-500'}>E-mail
             <Input
                 placeholder={'Enter your email...'}
                 name={'email'}
@@ -140,6 +143,7 @@ const CheckoutForm = () => {
                 className={'w-full'}
             />
         </label>
+        {formik.errors.email && formik.touched.email ? <div className={'text-red-500 mb-3 text-sm'}>{formik.errors.email}</div> : null}
 
         <Button type={'submit'} value={'Confirm'} styles={'bg-red-600 text-white'}/>
     </form>

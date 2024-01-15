@@ -1,7 +1,7 @@
 import {LoginForm} from "../features/authentication";
 
 const Login = () => {
-    return <div>
+    return <div className={'flex items-center justify-center h-full'}>
         <LoginForm />
     </div>
 }

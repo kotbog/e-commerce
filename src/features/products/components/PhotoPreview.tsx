@@ -13,6 +13,7 @@ const PhotoPreview : FunctionComponent<PhotoPreviewProps> = ({images}) => {
             })}
         </div>
         <div className={'flex-grow-1'}>
+
             <img src={images ? images[0] : preview} alt="product-img" className={'object-contain w-full h-full px-10'}/>
         </div>
     </div>

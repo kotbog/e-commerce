@@ -6,6 +6,7 @@ import {IRootState} from "../../../data/types";
 import withAuth from "../../authentication/components/withAuth";
 import {dispatch} from "jest-circus/build/state";
 import {addCartItemAuth, addCartItemLocal} from "../../cart/context/CartActions";
+import {Id, Toast} from "react-toastify/dist/types";
 
 
 type ProductProps = {
@@ -13,22 +14,25 @@ type ProductProps = {
     price: number,
     img?: string,
     id: number | string,
-    SKU: string | number
+    SKU: string | number,
+    showToast?: (item: string) => void
 }
 
-const Product : FunctionComponent<ProductProps> = ({name, price, img, id, SKU}) => {
+const Product : FunctionComponent<ProductProps> = ({name, price, img, id, SKU, showToast}) => {
 
     const [animateBtn, setAnimateBtn] = useState(false);
     const loggedIn = useSelector<IRootState>(state => state.Login.loggedIn);
     const userId = useSelector<IRootState>(state => state.Login.user?._id);
     const dispatch = useDispatch();
 
+
     function addToCart(){
         if(!loggedIn) {
-            dispatch(addCartItemLocal({SKU: SKU, name, price, images: [img || ''], _id:id, quantity: 1}))
+            dispatch(addCartItemLocal({SKU: SKU, name, price, images: [img || ''], _id:id, quantity: 1}));
         } else {
             dispatch(addCartItemAuth({SKU: SKU, name, price, images: [img || ''], _id:id, quantity: 1}, userId as string))
         }
+        showToast && showToast(name);
     }
 
     return <div className={'w-64 m-6'}>

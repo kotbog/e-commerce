@@ -6,6 +6,7 @@ import {useEffect} from "react";
 import {getCartItems} from "../features/cart/context/CartActions";
 import Preloader from "../components/Preloader";
 import withAuth from "../features/authentication/components/withAuth";
+import {calcTotal} from "../features/authentication/services/calc_total";
 const Cart = () => {
     const dispatch = useDispatch();
     const loggedIn = useSelector<IRootState, boolean>(state => state.Login.loggedIn);
@@ -21,25 +22,12 @@ const Cart = () => {
 
     if(loading) return <Preloader/>
 
-    function calcTotal() {
-        let total = 0;
 
-        if(items && items[0]) {
-            items.map(item => {
-                if(item.price) total += item.price * item.quantity;
-                else total += 0 * item.quantity;
-            })
-        } else {
-            return 0;
-        }
-        return total;
-
-    }
 
     return <div className={'container m-auto'}>
         <div className={'min-h-full'}>
             <CartList items={items}/>
-            <CartTotal shipping={10} subtotal={calcTotal()} final={false}/>
+            <CartTotal shipping={10} subtotal={calcTotal(items)} final={false}/>
         </div>
 
     </div>

@@ -21,7 +21,7 @@ const ConfigProduct : FunctionComponent<ConfigProductProps> = ({name, desc, pric
         <div className={'flex items-center py-2 justify-start'}>
             <Rating score={4} ratingQuantity={15}/>
             <span className={'block h-7 w-0.5 bg-gray-400 mx-4'}></span>
-            <span className={"text-green-500"}>В наявності</span>
+            <span className={"text-green-500"}>In stock</span>
         </div>
         <div>
             <span className={'text-3xl'}>${price}</span>

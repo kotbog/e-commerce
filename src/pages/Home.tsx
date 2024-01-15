@@ -7,15 +7,22 @@ import {Product as ProductType} from "../data/types"
 import Sidebar from "../features/category/components/Sidebar";
 import Tab from "../components/Tab";
 import {state} from "sucrase/dist/types/parser/traverser/base";
-
+import {toast, ToastContainer, ToastOptions} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Home = () => {
 
     const dispatch = useDispatch();
 
     const products = useSelector<IRootState, Array<ProductType> | undefined>((state) => state.Products.products);
     //const error = useSelector<IRootState, string | undefined>(state => state.Products.errorMessage);
-    console.log(products)
 
+    const showToastMessage = (item: string) => {
+        toast.success(`${item} added to cart!`, {
+            position: 'bottom-center',
+            autoClose: 3000,
+            hideProgressBar: true
+        });
+    };
     useEffect(() => {
         dispatch(getProductsAction({}));
     }, [dispatch]);
@@ -24,12 +31,12 @@ const Home = () => {
             <Sidebar />
             <div className={'flex justify-around flex-wrap gap-10 w-full'}>
                 {
-                    products && products.map(product => <Product key={product._id} SKU={product.SKU}  name={product.name} price={product.price} img={product.images && product.images[0]} id={product._id}/>)
+                    products && products.map(product => <Product showToast={showToastMessage} key={product._id} SKU={product.SKU}  name={product.name} price={product.price} img={product.images && product.images[0]} id={product._id}/>)
                 }
             </div>
         </div>
         {products ? <Tab header={'Наші продукти'} products={products}/> : null}
-
+        <ToastContainer limit={3}/>
     </div>
 }
 export default Home;
