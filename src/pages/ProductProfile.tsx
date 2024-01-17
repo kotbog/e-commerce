@@ -9,6 +9,7 @@ import {IRootState, User} from "../data/types";
 import {Product} from "../data/types";
 import Button from "../components/Button";
 import {addCartItemAuth, addCartItemLocal} from "../features/cart/context/CartActions";
+import {toast, ToastContainer} from "react-toastify";
 
 const ProductProfile = () => {
     let {id} = useParams();
@@ -30,17 +31,26 @@ const ProductProfile = () => {
 
     if(isLoading) return <Preloader/>
 
+    const showToastMessage = (item: string) => {
+        toast.success(<div><span className={'font-semibold'}>{`${item}`}</span> доданий в корзину!</div>, {
+            position: 'bottom-center',
+            autoClose: 3000,
+            hideProgressBar: true
+        });
+    };
+
     function handlePurchase (item : Product) {
         const productWithQuantity = {...item, quantity: amount};
         if(!isAuth && !user?._id) dispatch(addCartItemLocal(productWithQuantity))
         else if(user?._id) dispatch(addCartItemAuth(productWithQuantity, user._id))
+        showToastMessage(item.name);
     }
 
     return <div className={'container m-auto'}>
         {product ?
-            <div className={'flex'}>
+            <div className={'flex max-md:flex-wrap max-md:justify-center'}>
                 <PhotoPreview images={product.images}/>
-                <div className={'basis-1/2'}>
+                <div className={'basis-1/2 max-lg:px-5 max-md:basis-full mb-10'}>
                     <ConfigProduct
                         name={product.name}
                         desc={product.desc}
@@ -51,6 +61,7 @@ const ProductProfile = () => {
                     />
                     <Button onClick={() => { handlePurchase(product)} } value={'Add to cart'} styles={'bg-red-500 text-white'}/>
                 </div>
+                <ToastContainer limit={3}/>
             </div>
             : <p>Product not found</p>
 

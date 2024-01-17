@@ -74,16 +74,15 @@ const CheckoutForm = () => {
                     telephone: values.telephone
                 }, cartItems
             }));
-            if(!loading && !error ) {
-               navigate('/cart/success')
-            }
+            navigate('/cart/success')
+
         }
     });
-    return <div className={'basis-1/2'}>
+    return <div className={'basis-1/2 max-md:m-auto py-3'}>
     <form className={'flex flex-col w-80 m-auto'} onSubmit={formik.handleSubmit}>
-        <label className={'font-semibold flex flex-col text-gray-500 text-sm'}>First name
+        <label className={'font-semibold flex flex-col text-gray-500 text-sm'}>Ваше ім'я
             <Input
-                placeholder={'Enter your name...'}
+                placeholder={'Введіть ім\'я...'}
                 name={'first_name'}
                 value={formik.values.first_name}
                 onChange={formik.handleChange}
@@ -93,9 +92,9 @@ const CheckoutForm = () => {
         </label>
         {formik.errors.first_name && formik.touched.first_name ? <div className={'text-red-500 mb-3 text-sm'}>{formik.errors.first_name}</div> : null}
 
-        <label className={'font-semibold flex flex-col text-sm text-gray-500'}>Last name
+        <label className={'font-semibold flex flex-col text-sm text-gray-500'}>Ваше прізвище
             <Input
-                placeholder={'Enter your last name...'}
+                placeholder={'Введіть прізвище...'}
                 name={'last_name'}
                 value={formik.values.last_name}
                 onChange={formik.handleChange}
@@ -106,9 +105,9 @@ const CheckoutForm = () => {
         </label>
         {formik.errors.last_name && formik.touched.last_name ? <div className={'text-red-500 mb-3 text-sm'}>{formik.errors.last_name}</div> : null}
 
-        <label className={'font-semibold flex flex-col text-sm text-gray-500'}>Address
+        <label className={'font-semibold flex flex-col text-sm text-gray-500'}>Ваша адреса
             <Input
-                placeholder={'Enter your address...'}
+                placeholder={'Введіть адресу...'}
                 name={'address'}
                 value={formik.values.address}
                 onChange={formik.handleChange}
@@ -119,9 +118,9 @@ const CheckoutForm = () => {
         </label>
         {formik.errors.address && formik.touched.address ? <div className={'text-red-500 mb-3 text-sm '}>{formik.errors.address}</div> : null}
 
-        <label className={'font-semibold flex flex-col text-sm text-gray-500'}>Phone number
+        <label className={'font-semibold flex flex-col text-sm text-gray-500'}>Ваш номер телефону
             <Input
-                placeholder={'Enter your telephone...'}
+                placeholder={'Введіть телефон...'}
                 name={'telephone'}
                 value={formik.values.telephone}
                 onChange={formik.handleChange}
@@ -132,9 +131,9 @@ const CheckoutForm = () => {
         </label>
         {formik.errors.telephone && formik.touched.telephone ? <div className={'text-red-500 mb-3 text-sm '}>{formik.errors.telephone}</div> : null}
 
-        <label className={'font-semibold flex flex-col text-sm text-gray-500'}>E-mail
+        <label className={'font-semibold flex flex-col text-sm text-gray-500'}>Ваш е-mail
             <Input
-                placeholder={'Enter your email...'}
+                placeholder={'Введіть email...'}
                 name={'email'}
                 value={formik.values.email}
                 onChange={formik.handleChange}
@@ -145,7 +144,7 @@ const CheckoutForm = () => {
         </label>
         {formik.errors.email && formik.touched.email ? <div className={'text-red-500 mb-3 text-sm'}>{formik.errors.email}</div> : null}
 
-        <Button type={'submit'} value={'Confirm'} styles={'bg-red-600 text-white'}/>
+        <Button type={'submit'} value={'Підтвердити'} styles={'bg-red-600 text-white'}/>
     </form>
     </div>
 }

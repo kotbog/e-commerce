@@ -113,7 +113,7 @@ function* removeItemLocalWorker(action : removeCartItemAction) {
 export function* sendOrderDataWorker(action : sendOrderAction) {
     try {
         yield put(setLoadingCart(true));
-        const res : sendOrderDataResponse = yield call(instance.post, "/cart/checkout", {user: action.payload.user, items: action.payload.cartItems});
+        const res : sendOrderDataResponse = yield call(instance.post, "/order", {user: action.payload.user, items: action.payload.cartItems});
         if(res.data.error) {
             yield put(setCartErrorMessage(res.data.message));
             yield put(setLoadingCart(false));

@@ -35,7 +35,7 @@ const Product : FunctionComponent<ProductProps> = ({name, price, img, id, SKU, s
         showToast && showToast(name);
     }
 
-    return <div className={'w-64 m-6'}>
+    return <div className={'w-64 m-6 m-auto'}>
         <div className={'relative'}
              onMouseOver={() => {setAnimateBtn(true)}}
              onMouseOut={() => {setAnimateBtn(false)}}

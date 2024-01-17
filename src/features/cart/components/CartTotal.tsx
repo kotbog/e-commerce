@@ -10,25 +10,25 @@ type CartTotalProps = {
 
 const CartTotal = ({subtotal, shipping, final} : CartTotalProps) => {
     const navigate = useNavigate();
-    return <div className={'flex w-full justify-between my-3'}>
+    return <div className={'flex w-full justify-between my-3 max-md:flex-wrap'}>
         {!final ?
-        <div className={'basis-2/5 flex justify-between items-start'}>
-            <Input placeholder={'Coupon Code'} styles={'w-1/2'}/>
-            <Button value={'Apply Coupon'} styles={'bg-red-500 text-white w-48'}/>
+        <div className={'basis-2/5 flex justify-between items-start p-1 max-sm:basis-full'}>
+            <Input placeholder={'Код купону'} styles={'basis-3/5'}/>
+            <Button value={'Підтвердити'} styles={'bg-red-500 text-white basis-1/3'}/>
         </div>
             : null}
         <div className={'border-2 rounded p-5 border-black flex-grow min-w-52 mx-2'}>
-            <h2 className={'font-bold text-lg'}>Cart total</h2>
+            <h2 className={'font-bold text-lg'}>Загалом</h2>
             <div className={'flex justify-between border-b-2 border-gray-500 py-3 font-medium'}>
-                <p>Subtotal:</p>
+                <p>Підсума:</p>
                 <span>${subtotal}</span>
             </div>
             <div className={'flex justify-between border-b-2 border-gray-500 py-3 font-medium'}>
-                <p>Shipping:</p>
+                <p>Доставка:</p>
                 <span>${shipping}</span>
             </div>
             <div className={'flex justify-between border-b-2 border-gray-500 py-3 font-medium'}>
-                <p>Total:</p>
+                <p>Загальна сума:</p>
                 <span>${subtotal + shipping}</span>
             </div>
             {!final ?

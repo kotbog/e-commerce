@@ -1,7 +1,7 @@
 const Footer = () => {
         return <footer className={'bg-black w-full'}>
             <div className={'container m-auto'}>
-                <div className={'flex w-1/4 flex-col py-8'}>
+                <div className={'flex w-1/4 flex-col py-8 max-md:p-3 max-md:w-1/2 max-sm:w-full'}>
                     <h2 className={'text-white font-bold text-2xl py-4'}>Exclusive</h2>
                     <h3 className={'text-white font-bold py-4'}>Підпишіться</h3>
                     <p className={'text-white text-sm py-2'}>Отримайте 10% на перше замовлення</p>

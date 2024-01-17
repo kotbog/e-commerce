@@ -21,9 +21,16 @@ const Tab : FunctionComponent<TabProps> = ({header, products}) => {
                 breakpoint: 1024,
                 settings: {
                     slidesToShow: 2,
-                    infinite: true
+                    slidesToScroll: 2
                 }
             },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
         ]
     }
 
@@ -31,8 +38,8 @@ const Tab : FunctionComponent<TabProps> = ({header, products}) => {
     return (
         <div className={'my-8'}>
             <div className={'flex justify-between'}>
-                <h2 className={'font-bold text-2xl'}>{header}</h2>
-                <div className={'flex flex-nowrap'}>
+                <h2 className={'font-bold text-2xl py-5'}>{header}</h2>
+                <div className={'flex flex-nowrap items-center'}>
                     <button className={'rounded-full bg-gray-200 p-1 flex items-center justify-center'} onClick={() => slider?.current?.slickNext()}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="black" className="w-6 h-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/>
@@ -45,16 +52,15 @@ const Tab : FunctionComponent<TabProps> = ({header, products}) => {
                     </button>
                 </div>
             </div>
-            <div>
+            <div className={'py-5'}>
                 <Slider ref={slider} {...settings}>
                 {
-                    products.map(product => <Product SKU={product.SKU}
-                                 key={product._id}
+                    products.map(product => <div key={product._id}><Product SKU={product.SKU}
                                  name={product.name}
                                  price={product.price}
                                  id={product._id}
                                  img={product.images && product.images[0]}
-                        />)
+                        /></div>)
                 }
                 </Slider>
             </div>

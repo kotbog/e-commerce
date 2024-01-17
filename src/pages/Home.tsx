@@ -17,7 +17,7 @@ const Home = () => {
     //const error = useSelector<IRootState, string | undefined>(state => state.Products.errorMessage);
 
     const showToastMessage = (item: string) => {
-        toast.success(`${item} added to cart!`, {
+        toast.success(<div><span className={'font-semibold'}>{`${item}`}</span> доданий в корзину!</div>, {
             position: 'bottom-center',
             autoClose: 3000,
             hideProgressBar: true
@@ -27,7 +27,7 @@ const Home = () => {
         dispatch(getProductsAction({}));
     }, [dispatch]);
     return <div className={'container mx-auto'}>
-        <div className={'flex w-full'}>
+        <div className={'flex w-full py-3'}>
             <Sidebar />
             <div className={'flex justify-around flex-wrap gap-10 w-full'}>
                 {

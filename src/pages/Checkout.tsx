@@ -12,7 +12,7 @@ const Checkout = () => {
     const user = useSelector<IRootState, User | undefined>(state => state.Login.user);
     const cartItems = useSelector<IRootState, CartItems>(state => state.Cart.items);
 
-    return <div className={'min-h-screen container m-auto flex flex-wrap'}>
+    return <div className={'min-h-screen container m-auto flex max-md:flex-wrap'}>
         {!user ? <CheckoutForm/> :
             <div className={'basis-1/2'}>
                 <span><h2 className={'font-semibold'}>First name: </h2>{user.first_name}</span>
@@ -26,12 +26,12 @@ const Checkout = () => {
         <div className={'basis-1/2 flex-grow'}>
             <ul>
                 {cartItems ? cartItems.map(item => {
-                    return <li className={'flex items-center w-full flex-row py-4'} key={item._id}>
+                    return <li className={'flex items-center w-full flex-row py-4 px-3'} key={item._id}>
                         <div className={'basis-[100px] flex justify-center'}>
                             <img
                                 src={item.images ? item.images[0] : SVG}
                                 alt={`product-img-${item._id}`}
-                                className={'h-20'}
+                                className={'h-20 object-contain'}
                             />
                         </div>
                         <span className={'font-semibold text-sm ml-4'}>{item.name}</span>
