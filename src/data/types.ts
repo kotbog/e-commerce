@@ -55,7 +55,10 @@ interface ICategoryState {
     loading: boolean,
     errorMessage?: string
 }
-
+interface ISearchState {
+    products: Array<Product>,
+    errorMessage?: string
+}
 
 export interface IRootState {
     Login: ILoginState,
@@ -63,7 +66,8 @@ export interface IRootState {
     Products: IProducts,
     ProductProfile: IProductProfile,
     Cart: ICartState,
-    Category: ICategoryState
+    Category: ICategoryState,
+    Search: ISearchState
 }
 
 

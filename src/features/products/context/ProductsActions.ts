@@ -8,16 +8,14 @@ import {
 } from "../data/action_types";
 import {
     GeProductInfoAction,
-    GetProductsAction, GetProductsParams,
+    GetProductsAction,
+    GetProductsParams,
     SetProductAction,
     SetProductErrorAction,
     SetProductsAction,
     SetProductsErrorAction
 } from "../data/types";
 import {Product} from "../../../data/types";
-
-
-
 
 
 export const setProducts = (products : Array<Product>) : SetProductsAction => {
@@ -43,4 +41,5 @@ export const setProductInfo = (data : Product) : SetProductAction => {
 export const setProductInfoError = (error : string) : SetProductErrorAction => {
     return {type: SET_PRODUCT_INFO_ERROR, message: error}
 }
+
 

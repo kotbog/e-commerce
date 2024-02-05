@@ -5,7 +5,7 @@ import {router} from "./lib/router";
 import {Provider} from "react-redux";
 import store from "./context/store";
 
-
+console.log(process.env.API_URL)
 const root = ReactDOM.createRoot(document.getElementById('root') as Element | DocumentFragment);
 root.render(
     <Provider store={store}>

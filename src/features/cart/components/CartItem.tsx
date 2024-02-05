@@ -1,5 +1,4 @@
 import {FunctionComponent} from "react";
-import {useDispatch} from "react-redux";
 
 
 type CartItemProps = {

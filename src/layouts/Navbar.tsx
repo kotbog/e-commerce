@@ -1,5 +1,6 @@
 import {NavLink, useLocation} from "react-router-dom";
 import {useEffect, useRef, useState} from "react";
+import Search from "../features/search/components/Search";
 // import {useEffect} from "react";
 // import {useDispatch} from "react-redux";
 // import {verifyUser} from "../features/authentication/context/LoginActions";
@@ -9,20 +10,15 @@ import {useEffect, useRef, useState} from "react";
 
 const Navbar = () => {
     const [openMenu, setOpenMenu] = useState(false);
-    const [openSearch, setOpenSearch] = useState(false);
-    const inputRef = useRef<HTMLInputElement>(null);
     const location = useLocation();
     useEffect(() => {
         setOpenMenu(false)
     }, [location.pathname]);
 
-    function openSearchInput() {
-        setOpenSearch(!openSearch);
-        inputRef.current && inputRef.current.focus()
-    }
+
 
     return <header className={'border-b-2'}>
-        <div className={'container mx-auto'}>
+        <div className={'container mx-auto relative'}>
             <div className={'flex justify-between py-4 items-center max-md:px-3'}>
                 <div className={'flex mr-2'}>
                 <button className={'max-lg:block hidden'} onClick={() => {
@@ -30,7 +26,7 @@ const Navbar = () => {
                 }}>
                     <svg className="w-[20px] h-[20px] text-gray-800 dark:text-white" aria-hidden="true"
                          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                        <path stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                               d="M1 1h15M1 7h15M1 13h15"/>
                     </svg>
                 </button>
@@ -42,7 +38,7 @@ const Navbar = () => {
                     <button className={'absolute top-5 right-5 lg:hidden'} onClick={() => setOpenMenu(false)}>
                         <svg className="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true"
                              xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                            <path stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                                   d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                         </svg>
                     </button>
@@ -53,35 +49,11 @@ const Navbar = () => {
                 </ul>
                 <div className={'flex flex-row items-center gap-4'}>
 
-                    <label
-                        className={`relative block max-lg:basis-full ${openSearch ? 'max-lg:block' : 'max-lg:hidden'}`}>
-                        <input
-                            onBlur={() => setOpenSearch(false)}
-                            className="w-full bg-white border border-slate-400 rounded-xl py-2 pl-3 pr-10 focus:outline-none"
-                            placeholder="Шукаєте щось?" type="text"
-                        />
-                        <span className="absolute inset-y-0 right-0 flex items-center pr-3">
-                        <svg className="h-5 w-5 fill-black" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-                             width="30"
-                             height="30" viewBox="0 0 30 30">
-                            <path
-                                d="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971 23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 z">
-                            </path>
-                        </svg>
-                    </span>
-                    </label>
+
                     <div className={'flex gap-4 items-center'}>
 
-                        <button onClick={openSearchInput}
-                                className={`hidden ${openSearch ? 'max-lg:hidden' : 'max-lg:block'}`}>
-                            <svg className="h-5 w-5 fill-black" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-                                 width="30"
-                                 height="30" viewBox="0 0 30 30">
-                                <path
-                                    d="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971 23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 z">
-                                </path>
-                            </svg>
-                        </button>
+                        <Search/>
+
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
                              stroke="currentColor" className="w-6 h-6">
                             <path strokeLinecap="round" strokeLinejoin="round"

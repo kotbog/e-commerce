@@ -2,7 +2,12 @@ import {call, put, spawn, takeEvery} from "@redux-saga/core/effects";
 import {GET_PRODUCT_INFO, GET_PRODUCTS} from "../data/action_types";
 import {getProductById, getProducts} from "../services/products_api";
 import {setErrorMessage, setProductInfo, setProductInfoError, setProducts} from "./ProductsActions";
-import {GeProductInfoAction, GetProductByIdResponse, GetProductsAction, GetProductsResponse} from "../data/types";
+import {
+    GeProductInfoAction,
+    GetProductByIdResponse,
+    GetProductsAction,
+    GetProductsResponse
+} from "../data/types";
 import {AxiosError} from "axios";
 
 
@@ -27,6 +32,9 @@ function* getProductByIdWorker(action : GeProductInfoAction) {
         else if (typeof e === "string") yield put(setProductInfoError(e))
     }
 }
+
+
+
 
 
 export function* getProductsWatcher () {

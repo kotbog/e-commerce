@@ -13,3 +13,4 @@ export const getProductById = async (id : number | string) => {
     const response = await instance.get<GetProductByIdResponse>(`/product/${id}`);
     return response.data;
 }
+

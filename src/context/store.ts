@@ -7,6 +7,7 @@ import ProductsReducer from "../features/products/context/ProductsReducer";
 import ProductProfileReducer from "../features/products/context/ProductProfileReducer";
 import CartReducer from "../features/cart/context/CartReducer";
 import CategoryReducer from "../features/category/context/CategoryReducer";
+import SearchReducer from "../features/search/context/SearchReducer";
 
 declare global {
     interface Window {
@@ -23,7 +24,8 @@ let rootReducer = combineReducers({
     Products: ProductsReducer,
     ProductProfile: ProductProfileReducer,
     Cart: CartReducer,
-    Category: CategoryReducer
+    Category: CategoryReducer,
+    Search: SearchReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
